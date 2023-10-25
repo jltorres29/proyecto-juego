@@ -6,25 +6,35 @@ class Enemy {
         this.width = 100; // Ancho del enemigo.
         this.height = 100; // Alto del enemigo.
         this.vy = 10; // Velocidad vertical del enemigo.
-        this.vx = 10; // Velocidad horizontal del enemigo.
+        this.vx = 0.5; // Velocidad horizontal del enemigo.
 
         this.element = document.createElement("div"); // Crea un nuevo elemento div para representar al enemigo.
-        this.element.style.position = "relative"; // Establece la posición del elemento como relativa.
+        this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
 
         this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
         this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
-        this.element.style.left = `${this.x}px`; // Establece la posición izquierda inicial.
-        this.element.style.top = `${this.y}px`; // Establece la posición superior inicial.
-        this.element.style.backgroundColor = "blue"; // Establece el color de fondo del elemento.
+        this.element.style.left = `${this.x = 100}px`; // Establece la posición izquierda inicial.
+
+        this.element.style.top = `${this.y = 20}px`; // Establece la posición superior inicial.
+        this.element.style.backgroundSize = "cover";
+        this.element.style.backgroundColor = "red"; // Establece el color de fondo del elemento.
         this.element.style.borderRadius = "100px"; // Establece un borde redondeado.
 
         this.container.appendChild(this.element); // Agrega el elemento al contenedor.
     }
 
     move() {
-        this.y += this.vy; // Actualiza la posición vertical del enemigo.
-        this.element.style.top = `${this.y}px`; // Aplica la nueva posición en el eje Y.
-        this.x += this.vx; // Actualiza la posición horizontal del enemigo.
-        this.element.style.right = `${this.x}px`; // Aplica la nueva posición en el eje X.
+        if (this.x >= 0) {
+            this.x += this.vx; // Actualiza la posición horizontal del enemigo.
+            this.element.style.left = `${this.x}px`; // Aplica la nueva posición en el eje X.
+        }
+        if (this.y >= 0) {
+            this.y += this.vy; // Actualiza la posición vertical del enemigo.
+            this.element.style.top = `${this.y}px`; // Aplica la nueva posición en el eje Y.
+        }
+        if (this.y >= 320) {
+            this.y -= this.vy; // Actualiza la posición vertical del enemigo.
+            this.element.style.bottom = `${this.y}px`; // Aplica la nueva posición en el eje Y.
+        }
     }
 }

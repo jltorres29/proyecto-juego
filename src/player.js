@@ -14,7 +14,7 @@ class Player {
         // Crear un elemento HTML para representar al jugador
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
-        this.element.style.background = `url(./assets/player1.png)`;
+        this.element.style.backgroundImage = "url('./assets/player1-right.png')";
         this.element.style.backgroundSize = "cover";
         this.element.style.backgroundPosition = "bottom";
         this.element.style.width = `${this.width}px`;
@@ -34,7 +34,7 @@ class Player {
         this.bullets.push(
             new Bullet(
                 this.container,
-                this.x + this.width / 2, // Posición inicial de la bala en el centro del jugador en el eje horizontal
+                this.x + this.width - 25, // Posición inicial de la bala en el centro del jugador en el eje horizontal
                 this.y + this.height / 2 // Posición inicial de la bala en el centro del jugador en el eje vertical
             )
         );
@@ -71,7 +71,11 @@ class Player {
     // Método para limpiar balas que están fuera de la pantalla
     cleanup() {
         const filteredBullets = this.bullets.filter((bullet) => {
-            return bullet.x < this.container.offsetWidth;
+            if (bullet.y + bullet.height > 0) return true;
+            else {
+                bullet.element.remove();
+                return false;
+            }
         });
 
         this.bullets = filteredBullets; // Actualizar la lista de balas
@@ -83,13 +87,26 @@ class Player {
             switch (e.code) {
                 case "ArrowRight":
                     this.vx = 10; // Mover hacia la derecha
+                    if ("ArrowRight") {
+                        this.element.style.backgroundImage = "url('./assets/player1-right.png')";
+                        console.log("voy a la derecha");
+                    }
                     break;
                 case "ArrowLeft":
                     this.vx = -10; // Mover hacia la izquierda
+                    if ("ArrowLeft") {
+                        console.log("voy a la izquierda");
+                        this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
+
+                    }
                     break;
                 case "ArrowUp":
                     if (this.canShoot) {
                         this.shoot(); // Disparar
+                        //SI LOGRAMOS CREAR IMAGEN DE DISPARO, USAR ESTE COMANDO
+                        //TOCARIA CAMBIAR LA ZONA DE DISPARO
+                       /* console.log("estoy disparando");
+                        this.element.style.backgroundImage = `url(./assets/player1-up.png)`;*/
                     }
                     break;
             }

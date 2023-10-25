@@ -8,7 +8,7 @@ class Bullet {
         this.vy = 10; // Velocidad vertical de la bala.
 
         this.element = document.createElement("div"); // Crea un nuevo elemento div para representar la bala.
-        this.element.style.position = "relative"; // Establece la posición del elemento como relativa.
+        this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
 
         this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
         this.element.style.height = `${this.height}px`; // Establece el alto del elemento.

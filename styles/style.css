@@ -28,8 +28,9 @@ h2 {
 #intro-game {
   width: 800px;
   height: 500px;
-  background-image: url("./../assets/fondoPantalla.jpg");
-  background-position: bottom;
+  background-image: url("./../assets/imagen-inicio1.jpeg");
+  
+  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;

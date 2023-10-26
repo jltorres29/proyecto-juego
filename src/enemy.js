@@ -11,15 +11,11 @@ class Enemy {
     this.xdirection = 1;
     this.element = document.createElement("div"); // Crea un nuevo elemento div para representar al enemigo.
     this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
-
     this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
     this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
     this.element.style.left = `${(this.x = 100)}px`; // Establece la posición izquierda inicial.
-
     this.element.style.top = `${(this.y = 20)}px`; // Establece la posición superior inicial.
-
     this.element.style.backgroundImage = `url(./assets/bomba2-recortada.png)`;
-
     this.element.style.backgroundPosition = "center";
     this.element.style.backgroundSize = "contain";
     this.element.style.backgroundRepeat = "no-repeat";
@@ -27,6 +23,12 @@ class Enemy {
     // this.element.style.borderRadius = "100px"; // Establece un borde redondeado.
 
     this.container.appendChild(this.element); // Agrega el elemento al contenedor.
+    /* this.element1 = this.element;
+    this.element2 = this.element;
+    this.element1.height = this.element.height / 2
+    this.element2.width = this.element.width / 2
+    this.container.appendChild(this.element1);
+    this.container.appendChild(this.element2); */
   }
 
   move() {

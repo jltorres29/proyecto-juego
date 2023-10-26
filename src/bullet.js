@@ -14,6 +14,9 @@ class Bullet {
         this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
         this.element.style.left = `${this.x}px`; // Establece la posición izquierda inicial.
         this.element.style.top = `${this.y}px`; // Establece la posición superior inicial.
+        
+        // this.element.style.backgroundImage = PONER IMAGEN DISPARO
+        
         this.element.style.backgroundColor = "blue"; // Establece el color de fondo del elemento.
         this.element.style.borderRadius = "100px"; // Establece un borde redondeado.
 

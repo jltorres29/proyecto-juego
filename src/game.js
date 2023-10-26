@@ -16,14 +16,54 @@ class Game {
         setInterval(() => {
 
             this.update(); // Actualiza el estado del juego en cada intervalo.
-        }, 1000 / 24); // Actualiza el juego aproximadamente 36 veces por segundo.
+        }, 1000 / 24); // Actualiza el juego aproximadamente 24 veces por segundo.
     }
 
     // Método para actualizar el estado del juego.
     update() {
         this.player.move(); // Mueve al jugador.
         this.enemy.move();
-
-
     }
+
+   /* checkCollisions() {
+        // Enemy - player collision
+    
+        const collidedEnemy = this.enemies.find((enemy) => {
+          return enemy.didCollide(this.player);
+        });
+    
+        if (collidedEnemy) {
+          this.enemies = this.enemies.filter((enemy) => {
+            return enemy !== collidedEnemy;
+          });
+    
+          collidedEnemy.element.style.display = "none";
+          this.player.hits--;
+    
+          this.score.update(this.player.hits, "enemy");
+    
+          if (this.player.hits <= 0) {
+            this.gameOver();
+          }
+        }
+*/
+
+/* this.player.bullets.find((bullet) => {
+    return this.enemies.find((enemy) => {
+      if (enemy.didCollide(bullet)) {
+        enemy.element.remove();
+
+        this.enemies = this.enemies.filter((en) => {
+          return en !== enemy;
+        });
+
+        bullet.element.remove();
+
+        this.player.bullets = this.player.bullets.filter((bul) => {
+          return bul !== bullet;
+        });
+      }
+    });
+  });    */
+
 }

@@ -10,7 +10,7 @@ class Player {
         this.bullets = []; // Almacenamiento de balas disparadas
         this.hits = 30; // Vidas o puntos de salud
         this.canShoot = true; // Control para permitir disparos
-
+        this.xdirection = 1;
         // Crear un elemento HTML para representar al jugador
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
@@ -34,7 +34,7 @@ class Player {
         this.bullets.push(
             new Bullet(
                 this.container,
-                this.x + ((this.width / 2) - 9), // Posición inicial de la bala en el centro del jugador en el eje horizontal
+                this.x + ((this.width / 2) - 7), // Posición inicial de la bala en el centro del jugador en el eje horizontal
                 this.y + ((this.height / 2) - 60) // Posición inicial de la bala en el centro del jugador en el eje vertical
             )
         );
@@ -85,28 +85,35 @@ class Player {
     setListeners() {
         window.addEventListener("keydown", (e) => {
             switch (e.code) {
+
                 case "ArrowRight":
                     this.vx = 10; // Mover hacia la derecha
                     if ("ArrowRight") {
                         this.element.style.backgroundImage = "url('./assets/player1-right.png')";
-                        console.log("voy a la derecha");
+                        return this.xdirection = 1;
                     }
                     break;
+
                 case "ArrowLeft":
                     this.vx = -10; // Mover hacia la izquierda
                     if ("ArrowLeft") {
-                        console.log("voy a la izquierda");
-                        this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
 
+                        this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
+                        return this.xdirection = -1;
                     }
                     break;
+
                 case "ArrowUp":
                     if (this.canShoot) {
                         this.shoot(); // Disparar
-                        //SI LOGRAMOS CREAR IMAGEN DE DISPARO, USAR ESTE COMANDO
-                        //TOCARIA CAMBIAR LA ZONA DE DISPARO
-                        console.log("estoy disparando");
-                        this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
+
+                        if (this.xdirection === 1) {
+                            this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
+                        }
+
+                        if (this.xdirection === -1) {
+                            this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
+                        }
                     }
                     break;
             }
@@ -119,7 +126,7 @@ class Player {
                     this.vx = 0; // Detener el movimiento horizontal
                     break;
                 default:
-                    console.log("estás parado");
+
             }
         });
     }

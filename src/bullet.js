@@ -3,8 +3,8 @@ class Bullet {
         this.container = container; // El contenedor en el que se crea la bala.
         this.x = x; // Posición inicial en el eje X.
         this.y = y; // Posición inicial en el eje Y.
-        this.width = 10; // Ancho de la bala.
-        this.height = 10; // Alto de la bala.
+        this.width = 15; // Ancho de la bala.
+        this.height = 15; // Alto de la bala.
         this.vy = 10; // Velocidad vertical de la bala.
 
         this.element = document.createElement("div"); // Crea un nuevo elemento div para representar la bala.
@@ -14,9 +14,9 @@ class Bullet {
         this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
         this.element.style.left = `${this.x}px`; // Establece la posición izquierda inicial.
         this.element.style.top = `${this.y}px`; // Establece la posición superior inicial.
-        
+
         // this.element.style.backgroundImage = PONER IMAGEN DISPARO
-        
+
         this.element.style.backgroundColor = "blue"; // Establece el color de fondo del elemento.
         this.element.style.borderRadius = "100px"; // Establece un borde redondeado.
 

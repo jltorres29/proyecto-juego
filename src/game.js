@@ -22,7 +22,7 @@ class Game {
     // Método para actualizar el estado del juego.
     update() {
         this.player.move(); // Mueve al jugador.
-        this.enemy.move();
+        this.enemy.move(); // Mueve al enemigo
     }
 
    /* checkCollisions() {

@@ -4,6 +4,7 @@ class Game {
         this.background = new Background(this.container); // Crea un fondo en el contenedor del juego.
         this.player = new Player(this.container); // Crea un jugador en el contenedor del juego.
         this.enemy = new Enemy(this.container); // Inicializa un arreglo para enemigos.
+        this.score = new Score(this.container, this.player.hits);
 
 
         console.log(container);

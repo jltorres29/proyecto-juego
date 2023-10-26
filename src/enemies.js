@@ -6,8 +6,9 @@ class Enemy {
         this.width = 100; // Ancho del enemigo.
         this.height = 100; // Alto del enemigo.
         this.vy = 10; // Velocidad vertical del enemigo.
-        this.vx = 0.5; // Velocidad horizontal del enemigo.
-
+        this.vx = 2; // Velocidad horizontal del enemigo.
+        this.ydirection = 1
+        this.xdirection = 1
         this.element = document.createElement("div"); // Crea un nuevo elemento div para representar al enemigo.
         this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
 
@@ -24,17 +25,41 @@ class Enemy {
     }
 
     move() {
-        if (this.x >= 0) {
+        if (this.xdirection === 1) {
             this.x += this.vx; // Actualiza la posición horizontal del enemigo.
             this.element.style.left = `${this.x}px`; // Aplica la nueva posición en el eje X.
+            if (this.x >= 700) {
+                this.xdirection = -1; // Cambia la dirección a -1 (bajando) cuando alcanza 320.
+            }
         }
-        if (this.y >= 0) {
-            this.y += this.vy; // Actualiza la posición vertical del enemigo.
+        else if (this.xdirection === -1) {
+            // Si la dirección es -1 (bajando), disminuye this.y.
+            this.x -= this.vx;
+            this.element.style.left = `${this.x}px`; // Aplica la nueva posición en el eje Y.
+
+            if (this.x <= 0) {
+                this.xdirection = 1; // Cambia la dirección a 1 (subiendo) cuando llega a 0.
+            }
+        }
+
+        if (this.ydirection === 1) {
+            // Si la dirección es 1 (subiendo), aumenta this.y.
+            this.y += this.vy;
             this.element.style.top = `${this.y}px`; // Aplica la nueva posición en el eje Y.
+
+            if (this.y >= 320) {
+                this.ydirection = -1; // Cambia la dirección a -1 (bajando) cuando alcanza 320.
+            }
         }
-        if (this.y >= 320) {
-            this.y -= this.vy; // Actualiza la posición vertical del enemigo.
-            this.element.style.bottom = `${this.y}px`; // Aplica la nueva posición en el eje Y.
+
+        else if (this.ydirection === -1) {
+            // Si la dirección es -1 (bajando), disminuye this.y.
+            this.y -= this.vy;
+            this.element.style.top = `${this.y}px`; // Aplica la nueva posición en el eje Y.
+
+            if (this.y <= 0) {
+                this.ydirection = 1; // Cambia la dirección a 1 (subiendo) cuando llega a 0.
+            }
         }
     }
 }

@@ -34,8 +34,8 @@ class Player {
         this.bullets.push(
             new Bullet(
                 this.container,
-                this.x + this.width - 25, // Posición inicial de la bala en el centro del jugador en el eje horizontal
-                this.y + this.height / 2 // Posición inicial de la bala en el centro del jugador en el eje vertical
+                this.x + ((this.width / 2) - 9), // Posición inicial de la bala en el centro del jugador en el eje horizontal
+                this.y + ((this.height / 2) - 60) // Posición inicial de la bala en el centro del jugador en el eje vertical
             )
         );
 
@@ -105,8 +105,8 @@ class Player {
                         this.shoot(); // Disparar
                         //SI LOGRAMOS CREAR IMAGEN DE DISPARO, USAR ESTE COMANDO
                         //TOCARIA CAMBIAR LA ZONA DE DISPARO
-                       /* console.log("estoy disparando");
-                        this.element.style.backgroundImage = `url(./assets/player1-up.png)`;*/
+                        console.log("estoy disparando");
+                        this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
                     }
                     break;
             }

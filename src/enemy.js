@@ -16,6 +16,7 @@ class Enemy {
     this.element.style.left = `${(this.x = 100)}px`; // Establece la posición izquierda inicial.
     this.element.style.top = `${(this.y = 20)}px`; // Establece la posición superior inicial.
     this.element.style.backgroundImage = `url(./assets/bomba2-recortada.png)`;
+    // this.element.style.alignItems = "center";
     this.element.style.backgroundPosition = "center";
     this.element.style.backgroundSize = "contain";
     this.element.style.backgroundRepeat = "no-repeat";
@@ -65,22 +66,5 @@ class Enemy {
         this.ydirection = 1; // Cambia la dirección a 1 (subiendo) cuando llega a 0.
       }
     }
-  }
-
-  // añadido =>
-  didCollide(obstacle) {
-    const enemyRect = this.element.getBoundingClientRect();
-    const obstacleRect = obstacle.element.getBoundingClientRect();
-
-    if (
-      enemyRect.left < obstacleRect.right &&
-      enemyRect.right > obstacleRect.left &&
-      enemyRect.top < obstacleRect.bottom &&
-      enemyRect.bottom > obstacleRect.top
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  } 
 }

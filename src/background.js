@@ -10,7 +10,7 @@ class Background {
         this.element = document.createElement("div"); // Crea un nuevo elemento div para representar el fondo.
         this.element.style.position = "absolute"; // Establece la posición del elemento como absoluta.
 
-        this.element.style.background = `url(./assets/stage2.png)`; // Establece la imagen de fondo.
+        this.element.style.background = `url(./assets/ironhack10.jpg)`; // Establece la imagen de fondo.
         this.element.style.backgroundSize = "cover"; // Ajusta el tamaño de la imagen de fondo para cubrir el elemento.
         this.element.style.backgroundPosition = "bottom"; // Alinea la imagen de fondo en la parte inferior.
         this.element.style.width = `${this.width}px`; // Establece el ancho del elemento igual al ancho del contenedor.

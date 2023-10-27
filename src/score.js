@@ -1,7 +1,7 @@
 class Score {
     constructor(container, lifes) {
       this.container = container;
-      this.lifes = lifes;
+      this.lifes = 3;
       this.points = 0;
   
       this.width = 150;

@@ -5,12 +5,13 @@ class Player {
         this.height = 100;
         this.x = 10;
         this.floor = 340; // Altura del suelo
-        this.y = 340; // Posición vertical inicial
+        this.y = 300; // Posición vertical inicial
         this.vx = 0; // Velocidad horizontal
         this.bullets = []; // Almacenamiento de balas disparadas
         this.hits = 30; // Vidas o puntos de salud
         this.canShoot = true; // Control para permitir disparos
         this.xdirection = 1;
+
         // Crear un elemento HTML para representar al jugador
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
@@ -67,6 +68,24 @@ class Player {
 
         this.cleanup(); // Eliminar las balas que salieron de la pantalla
     }
+
+    didCollide(enemy) {
+        const playerRect = this.element.getBoundingClientRect();
+        const enemyRect = enemy.element.getBoundingClientRect();
+    
+        if (
+          playerRect.left < enemyRect.right &&
+          playerRect.right > enemyRect.left &&
+          playerRect.top < enemyRect.bottom &&
+          playerRect.bottom > enemyRect.top
+        ) {
+          console.log("Crash!");
+    
+          return true;
+        } else {
+          return false;
+        }
+      }
 
     // Método para limpiar balas que están fuera de la pantalla
     cleanup() {

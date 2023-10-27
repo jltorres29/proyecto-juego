@@ -43,18 +43,38 @@ h2 {
 }
 
 
+/*
+
+#intro-game-btn {
+  background-image: url("./../assets/logo-favorito.jpeg");
+  padding: 50px;
+  margin: 50px;
+  align-items: inherit;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+}
+*/
+
+
 #intro-game button {
-  padding: 4px 30px;
-  background-color: rgb(28, 68, 123);
+  
+  padding: 40px 30px;
+  background-color: rgb(28, 68, 123); 
   border-radius: 15px;
-  border: none;
+  border:lab(from color white black red);
   color: white;
   font-size: 20px;
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
-  cursor: pointer;
+  cursor: pointer; 
+  
 }
 
+
+
+
 intro-game-btn #intro-game button:hover {
+  background-image: url("./../assets/bala-inicio.png");
   background-color: rgb(87, 85, 123);
 }

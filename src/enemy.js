@@ -54,8 +54,8 @@ class Enemy {
       this.y += this.vy;
       this.element.style.top = `${this.y}px`; // Aplica la nueva posición en el eje Y.
 
-      if (this.y >= 320) {
-        this.ydirection = -1; // Cambia la dirección a -1 (bajando) cuando alcanza 320.
+      if (this.y >= 290) {
+        this.ydirection = -1; // Cambia la dirección a -1 (bajando) cuando alcanza 290.
       }
     } else if (this.ydirection === -1) {
       // Si la dirección es -1 (bajando), disminuye this.y.

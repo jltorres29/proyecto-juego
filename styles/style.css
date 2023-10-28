@@ -11,8 +11,8 @@ body {
 h2 {
   font-size: 20px;
   color: white;
-  text-align: initial;
-  margin: 15px;
+  text-align: 15px;
+  margin: 8px;
 }
 
 /* Estilo del contenedor principal del juego */
@@ -30,29 +30,29 @@ h2 {
 
 #lifes-container {
   margin: 15px;
-  
+  }
 
+  /*FONDO PANTALLA PARA SELECCIONAR JUGADOR*/
+#game-board-player {
+  width: 800px;
+  height: 500px;
+  background-image: url("./../assets/logo2.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #intro-game {
   width: 800px;
   height: 500px;
   background-image: url("./../assets/imagen-inicio1.jpeg");
-
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-
-
 
 #intro-game-btn {
   background-image: url("./../assets/boton-start.jpg");
@@ -71,6 +71,41 @@ h2 {
   align-items: center;
 }
 
+#intro-game-player1-btn {
+  background-image: url("./../assets/boton-start.jpg");
+  padding: 20px 30px;
+  margin: 40px;
+  margin-top: 80px;
+  justify-content: center;
+  border-radius: 15px;
+  border: lab(from color white black red);
+  color: red;
+  font-size: 15px;
+  font-weight: medium;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+}
+
+#intro-game-player2-btn {
+  background-image: url("./../assets/boton-start.jpg");
+  padding: 20px 30px;
+  margin: 40px;
+  margin-top: 80px;
+  justify-content: center;
+  border-radius: 15px;
+  border: lab(from color white black red);
+  color: red;
+  font-size: 15px;
+  font-weight: medium;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
+}
 
 /*
 #intro-game button {
@@ -84,6 +119,14 @@ h2 {
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer; 
-  
 }
 */
+
+#select-player {
+  justify-content: center;
+  display: flex;
+}
+
+.hidden {
+  display: none !important;
+}

@@ -1,9 +1,9 @@
-class Player {
-  constructor(container, isSecondPlayer = false) {
+class Multiplayer {
+  constructor(container = false) {
     this.container = container;
     this.width = 100;
     this.height = 100;
-    this.x = isSecondPlayer ? 700 : 10;
+    this.x = 700;
     this.floor = 340; // Altura del suelo
     this.y = 300; // Posición vertical inicial
     this.vx = 0; // Velocidad horizontal
@@ -15,9 +15,7 @@ class Player {
     // Crear un elemento HTML para representar al jugador
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
-    this.element.style.backgroundImage = isSecondPlayer
-      ? "url('./assets/player1-left.png')"
-      : "url('./assets/player1-right.png')";
+    this.element.style.backgroundImage = "url('./assets/player1-left.png')";
     this.element.style.backgroundSize = "cover";
     this.element.style.backgroundPosition = "bottom";
     this.element.style.width = `${this.width}px`;
@@ -57,14 +55,14 @@ class Player {
     this.x += this.vx; // Mover al jugador horizontalmente
 
     // Limitar la posición del jugador dentro de los límites del contenedor
-    if (this.x <= -20) {
-      this.x = -20;
+    if (this.x <= -40) {
+      this.x = -40;
     }
-    if (this.x + this.width >= this.container.offsetWidth + 20) {
-      this.x = this.container.offsetWidth - this.width + 20;
+    if (this.x + this.width >= this.container.offsetWidth) {
+      this.x = this.container.offsetWidth - this.width;
     }
 
-    this.element.style.left = `${this.x}px`; // Actualizar la posición del elemento del jugador
+    this.element.style.left = `${this.x + 20}px`; // Actualizar la posición del elemento del jugador
 
     // Mover todas las balas disparadas por el jugador
     this.bullets.forEach((bullet) => {
@@ -107,51 +105,6 @@ class Player {
   }
 
   // Establecer escuchadores de eventos de teclado para controlar al jugador
-  setListeners() {
-    window.addEventListener("keydown", (e) => {
-      switch (e.code) {
-        case "ArrowRight":
-          this.vx = 10; // Mover hacia la derecha
-          if ("ArrowRight") {
-            this.element.style.backgroundImage =
-              "url('./assets/player1-right.png')";
-            return (this.xdirection = 1);
-          }
-          break;
-        case "ArrowLeft":
-          this.vx = -10; // Mover hacia la izquierda
-          if ("ArrowLeft") {
-            this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
-            return (this.xdirection = -1);
-          }
-          break;
-        case "ArrowUp":
-          if (this.canShoot) {
-            this.shoot(); // Disparar
-
-            if (this.xdirection === 1) {
-              this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
-            }
-
-            if (this.xdirection === -1) {
-              this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
-            }
-          }
-          break;
-      }
-    });
-
-    window.addEventListener("keyup", (e) => {
-      switch (e.code) {
-        case "ArrowRight":
-        case "ArrowLeft":
-          this.vx = 0; // Detener el movimiento horizontal
-          break;
-        default:
-      }
-    });
-  }
-
   setListenersPlayer2() {
     window.addEventListener("keydown", (e) => {
       switch (e.code) {

@@ -61,6 +61,42 @@ class Game {
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
       }
+
+      /*
+//prueba disparo y bomba
+this.enemy.move(); // Mueve al jugador.
+
+    
+    // Verifica si hay colisión y si todavía hay un enemigo en la pantalla
+    for (let i = 0; i < this.enemies.length; i++) {
+      const enemy = this.enemies[i];
+      enemy.move();
+
+      // si el jugador choca con un enemigo
+      if (this.bullet.didCollide(enemy)) {
+        // Elimina el enemigo del DOM
+        enemy.element.remove();
+        // Elimina el enemigo del array
+        this.enemies.splice(i, 1);
+        // Reduce 1 vida del jugador
+        this.lives--;
+        // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
+        i--;
+      } // Si el enemigo está fuera de la pantalla (en la parte inferior)
+      else if (enemy.top > this.height) {
+        // Aumenta la puntuación en 1
+        this.score++;
+        // Elimina el enemigo del DOM
+        enemy.element.remove();
+        // Elimina el enemigo del array
+        this.enemies.splice(i, 1);
+        // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
+        i--;
+      }
+    }
+*/
+
+
     }
 
     // Si las vidas son 0, game over

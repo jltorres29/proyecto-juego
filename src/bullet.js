@@ -29,4 +29,24 @@ class Bullet {
         this.y -= this.vy; // Actualiza la posición vertical de la bala.
         this.element.style.top = `${this.y}px`; // Aplica la nueva posición en el eje Y.
     }
+
+    didCollide(enemy) {
+        const bulletRect = this.element.getBoundingClientRect();
+        const enemyRect = enemy.element.getBoundingClientRect();
+    
+        if (
+            bulletRect.left < enemyRect.right &&
+            bulletRect.right > enemyRect.left &&
+            bulletRect.top < enemyRect.bottom &&
+            bulletRect.bottom > enemyRect.top
+        ) {
+          
+          return true;
+        } else {
+          return false;
+        }
+      }
+    
 }
+
+

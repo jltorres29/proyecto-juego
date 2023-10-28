@@ -7,6 +7,7 @@ body {
   background-color: rgb(210, 210, 210);
   margin: 0;
 }
+
 h2 {
   color: white;
   display: flex;
@@ -29,7 +30,7 @@ h2 {
   width: 800px;
   height: 500px;
   background-image: url("./../assets/imagen-inicio1.jpeg");
-  
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -43,20 +44,27 @@ h2 {
 }
 
 
-/*
+
 
 #intro-game-btn {
-  background-image: url("./../assets/logo-favorito.jpeg");
-  padding: 50px;
-  margin: 50px;
-  align-items: inherit;
+  background-image: url("./../assets/boton-start.jpg");
+  padding: 40px 30px;
+  margin: 30px;
+  justify-content: center;
+  border-radius: 15px;
+  border: lab(from color white black red);
+  color: red;
+  font-size: 15px;
+  font-weight: medium;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
   background-position: center;
   background-size: cover;
   align-items: center;
 }
-*/
 
 
+/*
 #intro-game button {
   
   padding: 40px 30px;
@@ -70,11 +78,4 @@ h2 {
   cursor: pointer; 
   
 }
-
-
-
-
-intro-game-btn #intro-game button:hover {
-  background-image: url("./../assets/bala-inicio.png");
-  background-color: rgb(87, 85, 123);
-}
+*/

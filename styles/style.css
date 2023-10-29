@@ -62,7 +62,7 @@ h2 {
   border-radius: 15px;
   border: lab(from color white black red);
   color: red;
-  font-size: 15px;
+  font-size: 30px;
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
@@ -72,15 +72,16 @@ h2 {
 }
 
 #intro-game-player1-btn {
-  background-image: url("./../assets/boton-start.jpg");
+  background-image: url("./../assets/jose.jfif");
   padding: 20px 30px;
   margin: 40px;
   margin-top: 80px;
   justify-content: center;
   border-radius: 15px;
   border: lab(from color white black red);
-  color: red;
-  font-size: 15px;
+  color: white;
+  border-color: red;
+  font-size: 40px;
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;
@@ -90,15 +91,16 @@ h2 {
 }
 
 #intro-game-player2-btn {
-  background-image: url("./../assets/boton-start.jpg");
+  background-image: url("./../assets/jorge.jfif");
   padding: 20px 30px;
   margin: 40px;
   margin-top: 80px;
   justify-content: center;
   border-radius: 15px;
   border: lab(from color white black red);
-  color: red;
-  font-size: 15px;
+  color: white;
+  border-color: red;
+  font-size: 40px;
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
   cursor: pointer;

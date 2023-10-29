@@ -16,7 +16,7 @@ class Player {
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
     this.element.style.backgroundImage = isSecondPlayer
-      ? "url('./assets/player1-left.png')"
+      ? "url('./assets/player2-left.png')"
       : "url('./assets/player1-right.png')";
     this.element.style.backgroundSize = "cover";
     this.element.style.backgroundPosition = "bottom";
@@ -271,14 +271,14 @@ class Player {
           this.vx = 10; // Mover hacia la derecha
           if ("KeyD") {
             this.element.style.backgroundImage =
-              "url('./assets/player1-right.png')";
+              "url('./assets/player2-right.png')";
             return (this.xdirection = 1);
           }
           break;
         case "KeyA":
           this.vx = -10; // Mover hacia la izquierda
           if ("KeyA") {
-            this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
+            this.element.style.backgroundImage = `url(./assets/player2-left.png)`;
             return (this.xdirection = -1);
           }
           break;
@@ -287,11 +287,11 @@ class Player {
             this.shoot(); // Disparar
 
             if (this.xdirection === 1) {
-              this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
+              this.element.style.backgroundImage = `url(./assets/player2-disparo-vertical-rigth.png)`;
             }
 
             if (this.xdirection === -1) {
-              this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
+              this.element.style.backgroundImage = `url(./assets/player2-disparo-vertical-left.png)`;
             }
             break;
           }

@@ -41,19 +41,16 @@ class Game {
     this.player.move(); // Mueve al jugador.
     this.player2.move();
 
-    // NUEVO
     // Verifica si hay colisión y si todavía hay un enemigo en la pantalla
     for (let i = 0; i < this.enemies.length; i++) {
       const enemy = this.enemies[i];
       enemy.move();
-
       // si el jugador choca con un enemigo
-      if (this.player.didCollide(enemy)) {
+      if (this.player.didCollide(enemy) || this.player2.didCollide(enemy)) {
         // Elimina el enemigo del DOM
         enemy.element.remove();
         // Elimina el enemigo del array
         this.enemies.splice(i, 1);
-        numenemy--;
         // Reduce 1 vida del jugador
         this.lives--;
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
@@ -64,15 +61,13 @@ class Game {
         this.score++;
         // Elimina el enemigo del DOM
         enemy.element.remove();
-        numenemy--;
         // Elimina el enemigo del array
         this.enemies.splice(i, 1);
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
-
       }
     }
-
+    
     // Si las vidas son 0, game over
     if (this.lives === 0) {
       this.endGame();
@@ -81,6 +76,7 @@ class Game {
     // Crea un nuevo enemigo basado en una probabilidad aleatoria
     // cuando no hay otros objetos en la pantalla
     let numenemy = 5
+
     if (Math.random() > 0.98 && this.enemies.length < numenemy) {
       this.enemies.push(new Enemy(this.container));
     }

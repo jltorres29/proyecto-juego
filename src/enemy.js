@@ -13,7 +13,8 @@ class Enemy {
     this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
     this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
     this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
-    this.element.style.left = `${(this.x = 100)}px`; // Establece la posición izquierda inicial.
+    const ramdomx = Math.floor(Math.random() * 801);//Establece un valor ramdom para el valor de la x entre 0 y 800
+    this.element.style.left = `${(this.x = ramdomx)}px`; // Establece la posición izquierda inicial.
     this.element.style.top = `${(this.y = 20)}px`; // Establece la posición superior inicial.
     this.element.style.backgroundImage = `url(./assets/bomba2-recortada.png)`;
     // this.element.style.alignItems = "center";
@@ -66,5 +67,5 @@ class Enemy {
         this.ydirection = 1; // Cambia la dirección a 1 (subiendo) cuando llega a 0.
       }
     }
-  } 
+  }
 }

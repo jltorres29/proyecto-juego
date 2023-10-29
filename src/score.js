@@ -1,8 +1,10 @@
 class Score {
-  constructor(container, lifes) {
+  constructor(container, lifes, score) {
     this.container = container;
+    this.lifes = lifes;
     this.lifes = 3;
-    this.points = 0;
+    this.score = score;
+    this.score = 0;
 
     this.width = 150;
     this.height = 100;
@@ -14,7 +16,7 @@ class Score {
 
     this.scoreTextEl = document.createElement("h2");
     this.scoreTextEl.id = "points-text";
-    this.scoreTextEl.textContent = `Score: ${this.points}`;
+    this.scoreTextEl.textContent = `Score: ${this.score}`;
 
     this.heartsContainer = document.createElement("div");
     this.heartsContainer.id = "lifes-container";

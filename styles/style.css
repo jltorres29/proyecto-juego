@@ -30,9 +30,9 @@ h2 {
 
 #lifes-container {
   margin: 15px;
-  }
+}
 
-  /*FONDO PANTALLA PARA SELECCIONAR JUGADOR*/
+/*FONDO PANTALLA PARA SELECCIONAR JUGADOR*/
 #game-board-player {
   width: 800px;
   height: 500px;
@@ -129,4 +129,21 @@ h2 {
 
 .hidden {
   display: none !important;
+}
+
+#controls-player1 {
+  justify-content: center;
+
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 100px;
+  margin-left: 100px;
+
+}
+
+#controls-player2 {
+  justify-content: center;
+
+  font-family: "Courier New", Courier, monospace;
+  margin-top: 100px;
+  margin-right: 100px;
 }

@@ -1,18 +1,20 @@
 class Game {
   constructor(container, isMultiPlayer = false) {
     this.container = container;
+
+
     this.background = new Background(this.container); // Crea un fondo en el contenedor del juego.
+
     this.player = new Player(this.container); // Crea un jugador en el contenedor del juego.
     if (isMultiPlayer) {
       this.player2 = new Player(this.container, true); // Crea un jugador en el contenedor del juego.
     }
-    //this.enemy = new Enemy(this.container); // Inicializa un arreglo para enemigos.
-    this.score = new Score(this.container, this.player.hits);
-    this.enemies = [];
 
-    // NUEVO
-    this.score = 0;
-    this.lives = 3;
+    // this.enemy = new Enemy(this.container); // Inicializa un arreglo para enemigos.
+
+    this.score = new Score(this.container, this.score, this.player.hits);
+    this.enemies = [];
+    this.lifes = new Score(this.container, this.lifes)
     this.gameIsOver = false;
   }
 
@@ -37,8 +39,8 @@ class Game {
   // Método para actualizar el estado del juego.
   update() {
     this.player.move(); // Mueve al jugador.
-    this.enemy.move(); // Mueve al enemigo
-    this.player2.move();
+
+    //this.player2.move(); 
 
     // NUEVO
     // Verifica si hay colisión y si todavía hay un enemigo en la pantalla
@@ -52,6 +54,7 @@ class Game {
         enemy.element.remove();
         // Elimina el enemigo del array
         this.enemies.splice(i, 1);
+        numenemy--;
         // Reduce 1 vida del jugador
         this.lives--;
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
@@ -62,21 +65,24 @@ class Game {
         this.score++;
         // Elimina el enemigo del DOM
         enemy.element.remove();
+        numenemy--;
         // Elimina el enemigo del array
         this.enemies.splice(i, 1);
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
+
       }
     }
 
     // Si las vidas son 0, game over
     if (this.lives === 0) {
-      // this.endGame();
+      this.endGame();
     }
 
     // Crea un nuevo enemigo basado en una probabilidad aleatoria
     // cuando no hay otros objetos en la pantalla
-    if (Math.random() > 0.98 && this.enemies.length < 5) {
+    let numenemy = 5
+    if (Math.random() > 0.98 && this.enemies.length < numenemy) {
       this.enemies.push(new Enemy(this.container));
     }
 

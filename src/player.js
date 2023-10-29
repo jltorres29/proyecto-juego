@@ -29,9 +29,14 @@ class Player {
     this.container.appendChild(this.element);
 
     // Establecer escuchadores de eventos de teclado
-    this.setListeners();
-    if (isSecondPlayer === true) {
+    this.isSecondPlayer = isSecondPlayer; // Agrega una propiedad para identificar al segundo jugador
+    // ...
+
+    // Establecer escuchadores de eventos de teclado específicos para cada jugador
+    if (isSecondPlayer) {
       this.setListenersPlayer2();
+    } else {
+      this.setListenersPlayer1();
     }
   }
 
@@ -107,7 +112,105 @@ class Player {
   }
 
   // Establecer escuchadores de eventos de teclado para controlar al jugador
-  setListeners() {
+  /* setListeners() {
+     window.addEventListener("keydown", (e) => {
+       switch (e.code) {
+         case "ArrowRight":
+           this.vx = 10; // Mover hacia la derecha
+           if ("ArrowRight") {
+             this.element.style.backgroundImage =
+               "url('./assets/player1-right.png')";
+             return (this.xdirection = 1);
+           }
+           break;
+         case "ArrowLeft":
+           this.vx = -10; // Mover hacia la izquierda
+           if ("ArrowLeft") {
+             this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
+             return (this.xdirection = -1);
+           }
+           break;
+         case "ArrowUp":
+           if (this.canShoot) {
+             this.shoot(); // Disparar
+ 
+             if (this.xdirection === 1) {
+               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
+             }
+ 
+             if (this.xdirection === -1) {
+               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
+             }
+           }
+           break;
+       }
+     });
+ 
+     window.addEventListener("keyup", (e) => {
+       if (!this.isSecondPlayer) {
+         switch (e.code) {
+           case "ArrowRight":
+           case "ArrowLeft":
+             this.vx = 0; // Detener el movimiento horizontal
+             break;
+           default:
+         }
+       }
+     });
+   }
+ 
+   setListenersPlayer2() {
+     window.addEventListener("keydown", (e) => {
+       switch (e.code) {
+         case "KeyD":
+           this.vx = 10; // Mover hacia la derecha
+           if ("KeyD") {
+             this.element.style.backgroundImage =
+               "url('./assets/player1-right.png')";
+             return (this.xdirection = 1);
+           }
+           break;
+         case "KeyA":
+           this.vx = -10; // Mover hacia la izquierda
+           if ("KeyA") {
+             this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
+             return (this.xdirection = -1);
+           }
+           break;
+         case "KeyW":
+           if (this.canShoot) {
+             this.shoot(); // Disparar
+ 
+             if (this.xdirection === 1) {
+               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
+             }
+ 
+             if (this.xdirection === -1) {
+               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
+             }
+           }
+           break;
+       }
+     });
+ 
+     window.addEventListener("keyup", (e) => {
+       switch (e.code) {
+         case "KeyD":
+         case "KeyA":
+           this.vx = 0; // Detener el movimiento horizontal
+           break;
+         default:
+       }
+     });*/
+
+
+
+  // Establecer escuchadores de eventos de teclado para controlar al jugador 1
+  setListenersPlayer1() {
+    if (this.isSecondPlayer) {
+      return; // No asigna eventos de teclado para el segundo jugador
+    }
+
     window.addEventListener("keydown", (e) => {
       switch (e.code) {
         case "ArrowRight":
@@ -142,6 +245,10 @@ class Player {
     });
 
     window.addEventListener("keyup", (e) => {
+      if (this.isSecondPlayer) {
+        return; // No asigna eventos de teclado para el segundo jugador
+      }
+
       switch (e.code) {
         case "ArrowRight":
         case "ArrowLeft":
@@ -152,25 +259,30 @@ class Player {
     });
   }
 
+  // Establecer escuchadores de eventos de teclado para controlar al jugador 2
   setListenersPlayer2() {
+    if (!this.isSecondPlayer) {
+      return; // No asigna eventos de teclado para el primer jugador
+    }
+
     window.addEventListener("keydown", (e) => {
       switch (e.code) {
-        case "d":
+        case "KeyD":
           this.vx = 10; // Mover hacia la derecha
-          if ("d") {
+          if ("KeyD") {
             this.element.style.backgroundImage =
               "url('./assets/player1-right.png')";
             return (this.xdirection = 1);
           }
           break;
-        case "a":
+        case "KeyA":
           this.vx = -10; // Mover hacia la izquierda
-          if ("a") {
+          if ("KeyA") {
             this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
             return (this.xdirection = -1);
           }
           break;
-        case "w":
+        case "KeyW":
           if (this.canShoot) {
             this.shoot(); // Disparar
 
@@ -181,19 +293,25 @@ class Player {
             if (this.xdirection === -1) {
               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
             }
+            break;
           }
-          break;
       }
     });
 
     window.addEventListener("keyup", (e) => {
+      if (!this.isSecondPlayer) {
+        return; // No asigna eventos de teclado para el primer jugador
+      }
+
       switch (e.code) {
-        case "d":
-        case "a":
+        case "KeyD":
+        case "KeyA":
           this.vx = 0; // Detener el movimiento horizontal
           break;
         default:
       }
     });
   }
+
+
 }

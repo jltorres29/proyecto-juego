@@ -39,8 +39,7 @@ class Game {
   // Método para actualizar el estado del juego.
   update() {
     this.player.move(); // Mueve al jugador.
-
-    //this.player2.move(); 
+    this.player2.move();
 
     // NUEVO
     // Verifica si hay colisión y si todavía hay un enemigo en la pantalla

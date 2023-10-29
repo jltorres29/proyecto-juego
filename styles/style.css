@@ -15,6 +15,10 @@ h2 {
   margin: 8px;
 }
 
+h3 {
+  font-size: 25px;
+}
+
 /* Estilo del contenedor principal del juego */
 #game-board {
   overflow: hidden;
@@ -36,7 +40,7 @@ h2 {
 #game-board-player {
   width: 800px;
   height: 500px;
-  background-image: url("./../assets/logo2.jpeg");
+  background-image: url("./../assets/logo6.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -62,6 +66,7 @@ h2 {
   border-radius: 15px;
   border: lab(from color white black red);
   color: red;
+  text-shadow: white;
   font-size: 30px;
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
@@ -100,6 +105,7 @@ h2 {
   border: lab(from color white black red);
   color: white;
   border-color: red;
+  text-shadow: black;
   font-size: 40px;
   font-weight: medium;
   font-family: "Courier New", Courier, monospace;
@@ -108,21 +114,6 @@ h2 {
   background-size: cover;
   align-items: center;
 }
-
-/*
-#intro-game button {
-  
-  padding: 40px 30px;
-  background-color: rgb(28, 68, 123); 
-  border-radius: 15px;
-  border:lab(from color white black red);
-  color: white;
-  font-size: 20px;
-  font-weight: medium;
-  font-family: "Courier New", Courier, monospace;
-  cursor: pointer; 
-}
-*/
 
 #select-player {
   justify-content: center;
@@ -133,19 +124,29 @@ h2 {
   display: none !important;
 }
 
-#controls-player1 {
-  justify-content: center;
+#controls-players {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+}
 
-  font-family: "Courier New", Courier, monospace;
-  margin-top: 100px;
-  margin-left: 100px;
+#player1 {
+  margin-left: 20px;
 
 }
 
-#controls-player2 {
-  justify-content: center;
+#player2 {
+  margin-right: 20px;
 
-  font-family: "Courier New", Courier, monospace;
-  margin-top: 100px;
+}
+
+#img-jose {
+  height: 40px;
+  width: 40px;
+  margin-top: 400px;
   margin-right: 100px;
+  position: absolute;
 }

@@ -8,10 +8,11 @@ class Game {
     this.player = new Player(this.container); // Crea un jugador en el contenedor del juego.
     if (isMultiPlayer) {
       this.player2 = new Player(this.container, true); // Crea un jugador en el contenedor del juego.
+      this.score2 = new Score2(this.container, this.score, this.player.hits);
     }
 
     // this.enemy = new Enemy(this.container); // Inicializa un arreglo para enemigos.
-
+    //this.imgjose = new Score(this.container)
     this.score = new Score(this.container, this.score, this.player.hits);
     this.enemies = [];
     this.lifes = new Score(this.container, this.lifes)
@@ -42,60 +43,60 @@ class Game {
     this.player2.move();
 
     // Verifica si hay colisión y si todavía hay un enemigo en la pantalla
-    if (this.player2) {
-      for (let i = 0; i < this.enemies.length; i++) {
-        const enemy = this.enemies[i];
-        enemy.move();
-        // si el jugador choca con un enemigo
-        if (this.player.didCollide(enemy) || this.player2.didCollide(enemy)) {
-          // Elimina el enemigo del DOM
-          enemy.element.remove();
-          // Elimina el enemigo del array
-          this.enemies.splice(i, 1);
-          // Reduce 1 vida del jugador
-          this.lives--;
-          // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
-          i--;
-        } // Si el enemigo está fuera de la pantalla (en la parte inferior)
-        else if (enemy.top > this.height) {
-          // Aumenta la puntuación en 1
-          this.score++;
-          // Elimina el enemigo del DOM
-          enemy.element.remove();
-          // Elimina el enemigo del array
-          this.enemies.splice(i, 1);
-          // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
-          i--;
-        }
-      }
 
-      // Si las vidas son 0, game over
-      if (this.lives === 0) {
-        this.endGame();
+    for (let i = 0; i < this.enemies.length; i++) {
+      const enemy = this.enemies[i];
+      enemy.move();
+      // si el jugador choca con un enemigo
+      if (this.player.didCollide(enemy) || this.player2.didCollide(enemy)) {
+        // Elimina el enemigo del DOM
+        enemy.element.remove();
+        // Elimina el enemigo del array
+        this.enemies.splice(i, 1);
+        // Reduce 1 vida del jugador
+        this.lives--;
+        // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
+        i--;
+      } // Si el enemigo está fuera de la pantalla (en la parte inferior)
+      else if (enemy.top > this.height) {
+        // Aumenta la puntuación en 1
+        this.score++;
+        // Elimina el enemigo del DOM
+        enemy.element.remove();
+        // Elimina el enemigo del array
+        this.enemies.splice(i, 1);
+        // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
+        i--;
       }
-
-      // Crea un nuevo enemigo basado en una probabilidad aleatoria
-      // cuando no hay otros objetos en la pantalla
-      let numenemy = 5
-
-      if (Math.random() > 0.98 && this.enemies.length < numenemy) {
-        this.enemies.push(new Enemy(this.container));
-      }
-
-      // DA FALLO ESTE METODO
-      /*  endGame() {
-        this.player.element.remove();
-        this.enemies.forEach(function (enemy) {
-          enemy.element.remove();
-        });
-    
-        this.gameIsOver = true;
-        // Ocultar pantalla del juego
-        this.container.style.display = "none";
-        // Mostrar pantalla final
-        this.container.style.display = "block";
-      }
-  */
     }
+
+    // Si las vidas son 0, game over
+    if (this.lives === 0) {
+      this.endGame();
+    }
+
+    // Crea un nuevo enemigo basado en una probabilidad aleatoria
+    // cuando no hay otros objetos en la pantalla
+    let numenemy = 5
+
+    if (Math.random() > 0.98 && this.enemies.length < numenemy) {
+      this.enemies.push(new Enemy(this.container));
+    }
+
+    // DA FALLO ESTE METODO
+    /*  endGame() {
+      this.player.element.remove();
+      this.enemies.forEach(function (enemy) {
+        enemy.element.remove();
+      });
+  
+      this.gameIsOver = true;
+      // Ocultar pantalla del juego
+      this.container.style.display = "none";
+      // Mostrar pantalla final
+      this.container.style.display = "block";
+    }
+*/
   }
 }
+

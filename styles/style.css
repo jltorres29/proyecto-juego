@@ -153,8 +153,7 @@ h4 {
 
 }
 
-#img-jose,
-#img-jorge {
+#img-jose {
   margin-top: 16px;
   margin-left: 140px;
   position: absolute;
@@ -166,7 +165,7 @@ h4 {
 
 #img-jorge {
   margin-top: 16px;
-  margin-right: 140px;
+  margin-right: 17git 0px;
   position: absolute;
   background-size: cover;
   border-radius: 50px;

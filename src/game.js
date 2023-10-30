@@ -40,7 +40,7 @@ class Game {
   // Método para actualizar el estado del juego.
   update() {
     this.player.move(); // Mueve al jugador.
-    this.player2.move();
+    if (this.isMultiPlayer === true) { this.player2.move(); }
 
     // Verifica si hay colisión y si todavía hay un enemigo en la pantalla
 
@@ -48,7 +48,7 @@ class Game {
       const enemy = this.enemies[i];
       enemy.move();
       // si el jugador choca con un enemigo
-      if (this.player.didCollide(enemy) || this.player2.didCollide(enemy)) {
+      if (this.player.didCollide(enemy) || (this.player2 && this.player2.didCollide(enemy))) {
         // Elimina el enemigo del DOM
         enemy.element.remove();
         // Elimina el enemigo del array

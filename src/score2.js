@@ -12,10 +12,10 @@ class Score2 {
         this.y = 400;
 
         this.element = document.createElement("div");
-        this.element.id = "points";
+        this.element.id = "points2";
 
         this.scoreTextEl = document.createElement("h2");
-        this.scoreTextEl.id = "points-text";
+        this.scoreTextEl.id = "points2-text";
         this.scoreTextEl.textContent = `Score: ${this.score}`;
 
         this.heartsContainer = document.createElement("div");
@@ -24,6 +24,8 @@ class Score2 {
         this.imgjorge = document.createElement("div");
         this.imgjorge.id = "img-jorge";
         this.imgjorge.style.backgroundImage = "url('./assets/jorge-vidas.jfif')";
+
+        this.element.appendChild(this.imgjorge);
 
         new Array(this.lifes).fill("").forEach((_) => {
             const heart = document.createElement("img");

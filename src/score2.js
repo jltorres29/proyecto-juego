@@ -6,9 +6,9 @@ class Score2 {
         this.score = score;
         this.score = 0;
 
-        this.width = 150;
+        this.width = 300;
         this.height = 100;
-        this.x = 650;
+        this.x = 600;
         this.y = 400;
 
         this.element = document.createElement("div");
@@ -16,10 +16,12 @@ class Score2 {
 
         this.scoreTextEl = document.createElement("h2");
         this.scoreTextEl.id = "points2-text";
+        this.scoreTextEl.style.marginLeft = "65px";
         this.scoreTextEl.textContent = `Score: ${this.score}`;
 
         this.heartsContainer = document.createElement("div");
         this.heartsContainer.id = "lifes-container";
+        this.heartsContainer.style.marginLeft = "65px";
 
         this.imgjorge = document.createElement("div");
         this.imgjorge.id = "img-jorge";
@@ -32,6 +34,7 @@ class Score2 {
             heart.src = "./assets/caca.png";
             heart.style.width = "30px";
             heart.style.height = "30px";
+
 
             this.heartsContainer.appendChild(heart);
         });

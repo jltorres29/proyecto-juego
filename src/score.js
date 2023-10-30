@@ -18,14 +18,16 @@ class Score {
     this.scoreTextEl = document.createElement("h2");
     this.scoreTextEl.id = "points-text";
     this.scoreTextEl.textContent = `Score: ${this.score}`;
+    this.scoreTextEl.style.marginLeft = "30px";
 
     this.heartsContainer = document.createElement("div");
     this.heartsContainer.id = "lifes-container";
-    
+    this.heartsContainer.style.marginLeft = "30px";
+
     this.imgjose = document.createElement("div");
     this.imgjose.id = "img-jose";
     this.imgjose.style.backgroundImage = "url('./assets/jose-vidas.jfif')";
-   
+
 
     this.element.appendChild(this.imgjose);
 

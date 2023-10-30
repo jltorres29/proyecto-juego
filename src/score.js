@@ -21,12 +21,11 @@ class Score {
 
     this.heartsContainer = document.createElement("div");
     this.heartsContainer.id = "lifes-container";
-    //AQUI ESTOY INTENTANDO METER LA IMAGEN DE JOSE, NO SALE
+    
     this.imgjose = document.createElement("div");
     this.imgjose.id = "img-jose";
     this.imgjose.style.backgroundImage = "url('./assets/jose-vidas.jfif')";
-    this.imgjose.style.width = '50px';
-    this.imgjose.style.height = '50px';
+   
 
     this.element.appendChild(this.imgjose);
 

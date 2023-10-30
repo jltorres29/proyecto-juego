@@ -1,7 +1,7 @@
 class Game {
   constructor(container, isMultiPlayer = false) {
     this.container = container;
-
+    this.isMultiPlayer = isMultiPlayer;
 
     this.background = new Background(this.container); // Crea un fondo en el contenedor del juego.
 
@@ -58,6 +58,17 @@ class Game {
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
       } // Si el enemigo está fuera de la pantalla (en la parte inferior)
+
+      if (this.player.didCollide(enemy)) {
+        // Elimina el enemigo del DOM
+        enemy.element.remove();
+        // Elimina el enemigo del array
+        this.enemies.splice(i, 1);
+        // Reduce 1 vida del jugador
+        this.lives--;
+        // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
+        i--;
+      }
       else if (enemy.top > this.height) {
         // Aumenta la puntuación en 1
         this.score++;

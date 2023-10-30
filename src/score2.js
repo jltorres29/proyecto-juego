@@ -21,6 +21,10 @@ class Score2 {
         this.heartsContainer = document.createElement("div");
         this.heartsContainer.id = "lifes-container";
 
+        this.imgjorge = document.createElement("div");
+        this.imgjorge.id = "img-jorge";
+        this.imgjorge.style.backgroundImage = "url('./assets/jorge-vidas.jfif')";
+
         new Array(this.lifes).fill("").forEach((_) => {
             const heart = document.createElement("img");
             heart.src = "./assets/caca.png";

@@ -7,7 +7,7 @@ class Player {
     this.floor = 340; // Altura del suelo
     this.y = 300; // Posición vertical inicial
     this.vx = 0; // Velocidad horizontal
-    this.bullets = []; // Almacenamiento de balas disparadas
+    this.bullets = isSecondPlayer ? [] : []; // Almacenamiento de balas disparadas
     this.hits = 30; // Vidas o puntos de salud
     this.canShoot = true; // Control para permitir disparos
     this.xdirection = 1;
@@ -110,100 +110,6 @@ class Player {
 
     this.bullets = filteredBullets; // Actualizar la lista de balas
   }
-
-  // Establecer escuchadores de eventos de teclado para controlar al jugador
-  /* setListeners() {
-     window.addEventListener("keydown", (e) => {
-       switch (e.code) {
-         case "ArrowRight":
-           this.vx = 10; // Mover hacia la derecha
-           if ("ArrowRight") {
-             this.element.style.backgroundImage =
-               "url('./assets/player1-right.png')";
-             return (this.xdirection = 1);
-           }
-           break;
-         case "ArrowLeft":
-           this.vx = -10; // Mover hacia la izquierda
-           if ("ArrowLeft") {
-             this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
-             return (this.xdirection = -1);
-           }
-           break;
-         case "ArrowUp":
-           if (this.canShoot) {
-             this.shoot(); // Disparar
- 
-             if (this.xdirection === 1) {
-               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
-             }
- 
-             if (this.xdirection === -1) {
-               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
-             }
-           }
-           break;
-       }
-     });
- 
-     window.addEventListener("keyup", (e) => {
-       if (!this.isSecondPlayer) {
-         switch (e.code) {
-           case "ArrowRight":
-           case "ArrowLeft":
-             this.vx = 0; // Detener el movimiento horizontal
-             break;
-           default:
-         }
-       }
-     });
-   }
- 
-   setListenersPlayer2() {
-     window.addEventListener("keydown", (e) => {
-       switch (e.code) {
-         case "KeyD":
-           this.vx = 10; // Mover hacia la derecha
-           if ("KeyD") {
-             this.element.style.backgroundImage =
-               "url('./assets/player1-right.png')";
-             return (this.xdirection = 1);
-           }
-           break;
-         case "KeyA":
-           this.vx = -10; // Mover hacia la izquierda
-           if ("KeyA") {
-             this.element.style.backgroundImage = `url(./assets/player1-left.png)`;
-             return (this.xdirection = -1);
-           }
-           break;
-         case "KeyW":
-           if (this.canShoot) {
-             this.shoot(); // Disparar
- 
-             if (this.xdirection === 1) {
-               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical.png)`;
-             }
- 
-             if (this.xdirection === -1) {
-               this.element.style.backgroundImage = `url(./assets/player1-disparo-vertical-left.png)`;
-             }
-           }
-           break;
-       }
-     });
- 
-     window.addEventListener("keyup", (e) => {
-       switch (e.code) {
-         case "KeyD":
-         case "KeyA":
-           this.vx = 0; // Detener el movimiento horizontal
-           break;
-         default:
-       }
-     });*/
-
-
 
   // Establecer escuchadores de eventos de teclado para controlar al jugador 1
   setListenersPlayer1() {
@@ -312,6 +218,4 @@ class Player {
       }
     });
   }
-
-
 }

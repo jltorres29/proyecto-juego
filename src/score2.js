@@ -1,11 +1,8 @@
 class Score2 {
-    constructor(container, lifes, score) {
+    constructor(container, score = 0, lifes = 3) {
         this.container = container;
-        this.lifes = lifes;
-        this.lifes = 3;
+        this.lifes = lifes || 3;
         this.score = score;
-        this.score = 0;
-
         this.width = 300;
         this.height = 100;
         this.x = 600;
@@ -50,5 +47,19 @@ class Score2 {
         this.element.style.top = `${this.y}px`;
 
         this.container.appendChild(this.element);
+    }
+
+    removeLife() {
+        console.log('entra')
+        this.lifes--;
+
+        const hearts = this.heartsContainer.children
+        hearts[hearts.length - 1].remove()
+    }
+
+    addScore() {
+        this.score++;
+
+        this.scoreTextEl.textContent = `Score: ${this.score}`;
     }
 }

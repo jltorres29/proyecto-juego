@@ -6,16 +6,16 @@ class Game {
     this.background = new Background(this.container); // Crea un fondo en el contenedor del juego.
 
     this.player = new Player(this.container); // Crea un jugador en el contenedor del juego.
+    this.lifes = new Score(this.container, true)
     if (isMultiPlayer) {
       this.player2 = new Player(this.container, true); // Crea un jugador en el contenedor del juego.
-      this.score2 = new Score2(this.container, this.score, this.player.hits);
+      this.lifes2 = new Score2(this.container)
     }
 
     // this.enemy = new Enemy(this.container); // Inicializa un arreglo para enemigos.
     //this.imgjose = new Score(this.container)
-    this.score = new Score(this.container, this.score, this.player.hits);
+    // this.score = new Score(this.container, this.score, this.player.hits);
     this.enemies = [];
-    this.lifes = new Score(this.container, this.lifes)
     this.gameIsOver = false;
   }
 
@@ -49,12 +49,18 @@ class Game {
       enemy.move();
       // si el jugador choca con un enemigo
       if (this.player.didCollide(enemy) || (this.player2 && this.player2.didCollide(enemy))) {
+        if (this.player.didCollide(enemy)) {
+          console.log('player1');
+          this.lifes.removeLife()
+        } else {
+          this.lifes2.removeLife()
+        }
         // Elimina el enemigo del DOM
         enemy.element.remove();
         // Elimina el enemigo del array
         this.enemies.splice(i, 1);
-        // Reduce 1 vida del jugador
-        this.lives--;
+
+
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
       } // Si el enemigo está fuera de la pantalla (en la parte inferior)
@@ -82,32 +88,77 @@ class Game {
     }
 
     // Si las vidas son 0, game over
-    if (this.lives === 0) {
+    if (this.lifes === 0 && this.lifes2 === 0) {
       this.endGame();
     }
 
     // Crea un nuevo enemigo basado en una probabilidad aleatoria
     // cuando no hay otros objetos en la pantalla
-    let numenemy = 5
-
+    let numenemy = 5 //SI SE PUEDE, AÑADIR DIFICULTAD MODIFICANDO NUMERO ENEMI
     if (Math.random() > 0.98 && this.enemies.length < numenemy) {
       this.enemies.push(new Enemy(this.container));
     }
+    // Este código parece ser parte de una iteración a través de las balas del jugador
+    // para detectar colisiones con enemigos.
 
-    // DA FALLO ESTE METODO
-    /*  endGame() {
-      this.player.element.remove();
-      this.enemies.forEach(function (enemy) {
-        enemy.element.remove();
+    this.player.bullets.find((bullet) => {
+      // Iteramos a través de las balas del jugador.
+      console.log(bullet);
+      return this.enemies.find((enemy) => {
+        // Para cada bala, comprobamos si colisiona con algún enemigo.
+        console.log(enemy);
+        if (bullet.didCollide(enemy)) {
+          this.lifes.addScore();
+          // Si hay una colisión entre el enemigo y la bala:
+
+          // Eliminamos el elemento del enemigo del DOM.
+          enemy.element.remove();
+
+          // Actualizamos la lista de enemigos eliminando el enemigo actual.
+          this.enemies = this.enemies.filter((en) => {
+            return en !== enemy;
+          });
+
+          // Eliminamos el elemento de la bala del jugador del DOM.
+          bullet.element.remove();
+
+          // Actualizamos la lista de balas del jugador eliminando la bala actual.
+          this.player.bullets = this.player.bullets.filter((bul) => {
+            return bul !== bullet;
+          });
+        }
       });
-  
-      this.gameIsOver = true;
-      // Ocultar pantalla del juego
-      this.container.style.display = "none";
-      // Mostrar pantalla final
-      this.container.style.display = "block";
-    }
-*/
+    });
+
+    this.player2.bullets.find((bullet) => {
+      // Iteramos a través de las balas del jugador.
+      console.log(bullet);
+      return this.enemies.find((enemy) => {
+        // Para cada bala, comprobamos si colisiona con algún enemigo.
+        console.log(enemy);
+        if (bullet.didCollide(enemy)) {
+          this.lifes2.addScore();
+          // Si hay una colisión entre el enemigo y la bala:
+
+          // Eliminamos el elemento del enemigo del DOM.
+          enemy.element.remove();
+
+          // Actualizamos la lista de enemigos eliminando el enemigo actual.
+          this.enemies = this.enemies.filter((en) => {
+            return en !== enemy;
+          });
+
+          // Eliminamos el elemento de la bala del jugador del DOM.
+          bullet.element.remove();
+
+          // Actualizamos la lista de balas del jugador eliminando la bala actual.
+          this.player2.bullets = this.player2.bullets.filter((bul) => {
+            return bul !== bullet;
+          });
+        }
+      });
+    });
+
   }
 }
 

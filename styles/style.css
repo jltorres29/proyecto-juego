@@ -184,6 +184,17 @@ h4 {
   align-items: center;
   justify-content: center;
 }
+#win-game {
+  width: 800px;
+  height: 500px;
+  background-image: url("./../assets/imagen-inicio3.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 #restart-btn {
   background-image: url("./../assets/boton-start.jpg");
@@ -202,4 +213,20 @@ h4 {
   background-position: center;
   background-size: cover;
   align-items: center;
+}
+
+#game-score2 {
+  display: flex;
+  justify-content: right;
+  margin-right: 50px;
+  font-size: 30px;
+  color: white;
+}
+
+#game-score1 {
+  display: flex;
+  justify-content: left;
+  align-items: end;
+  font-size: 30px;
+  color: white;
 }

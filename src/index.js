@@ -45,7 +45,7 @@ window.addEventListener("load", () => {
     endGame.classList.add("hidden-div");
     // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
     gameBoardPlayer.classList.remove("hidden-div");
-
+    document.getElementById("end-sounds").pause();
     document.getElementById("playing-sound").play();
     document.getElementById("end-game-score1").innerText = "";
     document.getElementById("end-game-score2").innerText = "";

@@ -10,11 +10,17 @@
 
 <body>
     <div id="game-board">
-        <audio id="playing-sound" loop>
+        <audio id="playing-sound" volume="2000" loop>
             <source src="./sounds/playingSound.mp3" type="audio/mp3">
         </audio>
         <audio id="shoot-sound">
             <source src="./sounds/shoot.mp3" type="audio/mp3">
+        </audio>
+        <audio id="boom-sound">
+            <source src="./sounds/bombRemove.mp3" type="audio/mp3">
+        </audio>
+        <audio id="hurt-sound">
+            <source src="./sounds/hurt.mp3" type="audio/mp3">
         </audio>
 
         <div id="bullets-div"></div>
@@ -56,12 +62,28 @@
         </div>
 
         <div id="end-game" class="hidden">
-            <audio id="end-sounds">
+            <audio id="end-sounds" volume="5000">
                 <source src="./sounds/endSoundGameOver.mp3" type="audio/mp3">
             </audio>
             <div id="end-game-score1">
+                <h2>SCORE PLAYER 1:</h2>
             </div>
             <div id="end-game-score2">
+            </div>
+            <div>
+                <button id='restart-btn'>
+                    RESTART
+                </button>
+            </div>
+        </div>
+        <div id="win-game" class="hidden">
+            <audio id="end-sounds" volume="5000">
+                <source src="./sounds/endSoundGameOver.mp3" type="audio/mp3">
+            </audio>
+            <div id="game-score1">
+                <h2>SCORE PLAYER 1:</h2>
+            </div>
+            <div id="game-score2">
             </div>
             <div>
                 <button id='restart-btn'>

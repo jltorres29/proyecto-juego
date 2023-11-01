@@ -9,8 +9,10 @@ class Enemy {
     this.vx = 2; // Velocidad horizontal del enemigo.
     this.ydirection = 1;
     this.xdirection = 1;
+    
     this.element = document.createElement("div"); // Crea un nuevo elemento div para representar al enemigo.
     this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
+    this.element.id = "enemy";
     this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
     this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
     const ramdomx = Math.floor(Math.random() * 720);//Establece un valor ramdom para el valor de la x entre 0 y 800

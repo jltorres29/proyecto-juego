@@ -55,8 +55,10 @@ class Game {
         if (this.player.didCollide(enemy) && this.lifes.lifes > 0) {
           console.log('player1');
           this.lifes.removeLife()
+
         } else if (this.player2.didCollide(enemy) && this.lifes2.lifes > 0) {
           this.lifes2.removeLife()
+
         }
         // Elimina el enemigo del DOM
         enemy.element.remove();
@@ -79,6 +81,7 @@ class Game {
         this.enemies.splice(i, 1);
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
+
       }
     }
 
@@ -126,6 +129,7 @@ class Game {
           this.player.bullets = this.player.bullets.filter((bul) => {
             return bul !== bullet;
           });
+         
         }
       });
     });
@@ -139,6 +143,9 @@ class Game {
           console.log(enemy);
           if (bullet.didCollide(enemy)) {
             this.lifes2.addScore();
+            if (this.score = 10) {
+              this.youWin();
+            }
             // Si hay una colisión entre el enemigo y la bala:
 
             // Eliminamos el elemento del enemigo del DOM.
@@ -173,23 +180,44 @@ class Game {
       elem.classList.add("hidden-div");
     }
   }
+  youWin() {
+    document.getElementById("background").classList.add("hidden-div");
+    document.getElementById("win-game").classList.remove("hidden-div");
+    document.getElementById("playing-sound").pause();
+    document.getElementById("end-sounds").play();
+    document.getElementById("points").classList.add("hidden-div");
+    //document.getElementById("enemy").classList.add("hidden-div");
+    //this.enemies.remove();
+    if (this.player2) {
+      document.getElementById("points2").classList.add("hidden-div");
+    }
 
+
+    clearInterval(this.intervalId);
+
+    document.getElementById("game-score1").innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
+    if (this.player2) {
+      document.getElementById("game-score2").innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS `;
+    }
+  }
   endGame() {
     document.getElementById("background").classList.add("hidden-div");
     document.getElementById("end-game").classList.remove("hidden-div");
     document.getElementById("playing-sound").pause();
     document.getElementById("end-sounds").play();
     document.getElementById("points").classList.add("hidden-div");
+    //document.getElementById("enemy").classList.add("hidden-div");
+    //this.enemies.remove();
     if (this.player2) {
       document.getElementById("points2").classList.add("hidden-div");
     }
 
+
     clearInterval(this.intervalId);
 
-
-    document.getElementById("end-game-score1").innerText = `SCORE PLAYER 1: ${this.lifes.score} `;
+    document.getElementById("game-score1").innerText = `YOU HAVE ${this.lifes.score} POINTS`;
     if (this.player2) {
-      document.getElementById("end-game-score2").innerText = `SCORE PLAYER 2: ${this.lifes2.score} `;
+      document.getElementById("game-score2").innerText = `SCORE PLAYER 2: YOU HAVE ${this.lifes2.score} POINTS `;
     }
   }
 }

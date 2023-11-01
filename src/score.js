@@ -54,12 +54,13 @@ class Score {
     this.lifes--;
 
     const hearts = this.heartsContainer.children
-    hearts[hearts.length - 1].remove()
+    hearts[hearts.length - 1].remove();
+    document.getElementById("hurt-sound").play();
   }
 
   addScore() {
     this.score++;
-
     this.scoreTextEl.textContent = `Score: ${this.score}`;
+    document.getElementById("boom-sound").play();
   }
 }

@@ -59,7 +59,7 @@ class Player {
 
     setTimeout(() => {
       this.canShoot = true;
-    }, 300); // Restablecer la posibilidad de disparar después de un tiempo
+    }, 400); // Restablecer la posibilidad de disparar después de un tiempo
   }
 
   // Método para mover al jugador

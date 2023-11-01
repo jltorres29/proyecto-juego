@@ -50,11 +50,12 @@ class Score2 {
     }
 
     removeLife() {
-        console.log('entra')
+
         this.lifes--;
 
         const hearts = this.heartsContainer.children
         hearts[hearts.length - 1].remove()
+
     }
 
     addScore() {

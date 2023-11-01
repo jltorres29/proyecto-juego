@@ -12,26 +12,42 @@ window.addEventListener("load", () => {
 
   const selectPlayer2 = document.getElementById("intro-game-player2-btn");
 
+  const endGame = document.getElementById("end-game");
+
+  const btnRestart = document.getElementById("restart-btn");
+
   //AQUI SE AÑADE DESDE LA PANTALLA INICIO BOTON STAR A SELECCIONAR JUGADORES
   btnStart.addEventListener("click", () => {
-    introGame.classList.add("hidden");
+    introGame.classList.add("hidden-div");
     // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
-    gameBoardPlayer.classList.remove("hidden");
+    gameBoardPlayer.classList.remove("hidden-div");
+
+    document.getElementById("playing-sound").play();
   });
 
   //AQUI DESDE LA PANTALLA DE SELECCIONAR JUGADORES SE REDIRIGE A LA PANTALLA DEL JUEGO
 
   selectPlayer1.addEventListener("click", () => {
-    gameBoardPlayer.classList.add("hidden");
+    gameBoardPlayer.classList.add("hidden-div");
     // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
     const game = new Game(container);
     game.start();
   });
 
   selectPlayer2.addEventListener("click", () => {
-    gameBoardPlayer.classList.add("hidden");
+    gameBoardPlayer.classList.add("hidden-div");
     // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
     const game = new Game(container, true);
     game.start();
+  });
+
+  btnRestart.addEventListener("click", () => {
+    endGame.classList.add("hidden-div");
+    // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
+    gameBoardPlayer.classList.remove("hidden-div");
+
+    document.getElementById("playing-sound").play();
+    document.getElementById("end-game-score1").innerText = "";
+    document.getElementById("end-game-score2").innerText = "";
   });
 });

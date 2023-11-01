@@ -9,7 +9,7 @@ class Bullet {
 
     this.element = document.createElement("div"); // Crea un nuevo elemento div para representar la bala.
     this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
-
+    this.element.id = "bullets";
     this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
     this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
     this.element.style.left = `${this.x}px`; // Establece la posición izquierda inicial.

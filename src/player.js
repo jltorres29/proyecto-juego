@@ -14,6 +14,9 @@ class Player {
 
     // Crear un elemento HTML para representar al jugador
     this.element = document.createElement("div");
+    this.element.id = isSecondPlayer
+      ? "second-player"
+      : "first-player";
     this.element.style.position = "absolute";
     this.element.style.backgroundImage = isSecondPlayer
       ? "url('./assets/player2-left.png')"
@@ -42,6 +45,7 @@ class Player {
 
   // Método para disparar una bala
   shoot() {
+    // document.getElementById("bullets-div")
     this.bullets.push(
       new Bullet(
         this.container,
@@ -51,6 +55,7 @@ class Player {
     );
 
     this.canShoot = false; // Evitar disparar demasiado rápido
+    document.getElementById("shoot-sound").play();
 
     setTimeout(() => {
       this.canShoot = true;
@@ -218,4 +223,5 @@ class Player {
       }
     });
   }
+
 }

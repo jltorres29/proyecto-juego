@@ -130,7 +130,7 @@ h4 {
   justify-content: space-between;
 }
 
-.hidden {
+.hidden-div {
   display: none !important;
 }
 
@@ -171,4 +171,35 @@ h4 {
   border-radius: 50px;
   height: 50px;
   width: 50px;
+}
+
+#end-game {
+  width: 800px;
+  height: 500px;
+  background-image: url("./../assets/gameover1.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#restart-btn {
+  background-image: url("./../assets/boton-start.jpg");
+  padding: 40px 30px;
+  margin-top: 300px;
+  justify-content: center;
+  border-radius: 15px;
+  border: lab(from color white black red);
+  color: red;
+  text-shadow: white;
+  font-size: 30px;
+  font-style: oblique;
+  font-weight: medium;
+  font-family: "Courier New", Courier, monospace;
+  cursor: pointer;
+  background-position: center;
+  background-size: cover;
+  align-items: center;
 }

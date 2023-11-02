@@ -14,7 +14,7 @@ window.addEventListener("load", () => {
 
   const endGame = document.getElementById("end-game");
 
-  const btnRestart = document.getElementById("restart-btn");
+  const btnsRestart = document.getElementsByClassName("restart-btn");
 
   //AQUI SE AÑADE DESDE LA PANTALLA INICIO BOTON STAR A SELECCIONAR JUGADORES
   btnStart.addEventListener("click", () => {
@@ -41,13 +41,16 @@ window.addEventListener("load", () => {
     game.start();
   });
 
-  btnRestart.addEventListener("click", () => {
-    endGame.classList.add("hidden-div");
-    // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
-    gameBoardPlayer.classList.remove("hidden-div");
-    document.getElementById("end-sounds").pause();
-    document.getElementById("playing-sound").play();
-    document.getElementById("end-game-score1").innerText = "";
-    document.getElementById("end-game-score2").innerText = "";
-  });
+  Array.from(btnsRestart).forEach((btnRestart) => {
+    btnRestart.addEventListener("click", () => {
+      window.location.reload()
+      /*endGame.classList.add("hidden-div");
+      // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
+      gameBoardPlayer.classList.remove("hidden-div");
+      document.getElementById("end-sounds").pause();
+      document.getElementById("playing-sound").play();
+      document.getElementById("end-game-score1").innerText = "";
+      document.getElementById("end-game-score2").innerText = "";*/
+    });
+  })
 });

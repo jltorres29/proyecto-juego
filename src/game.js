@@ -19,7 +19,7 @@ class Game {
     this.enemies = [];
     this.gameIsOver = false;
 
-    this.intervalId = [];
+    this.intervalId = null;
   }
 
   // Método para iniciar el juego.
@@ -31,14 +31,14 @@ class Game {
   }
 
   // nuevo metodo gameLoop
-  gameLoop() {
+  /*gameLoop() {
     if (this.gameIsOver) {
       return;
     }
     this.update();
 
     window.requestAnimationFrame(() => this.gameLoop());
-  }
+  }*/
 
   // Método para actualizar el estado del juego.
   update() {
@@ -55,10 +55,11 @@ class Game {
         if (this.player.didCollide(enemy) && this.lifes.lifes > 0) {
           console.log('player1');
           this.lifes.removeLife()
+          console.log(this.lifes);
 
         } else if (this.player2.didCollide(enemy) && this.lifes2.lifes > 0) {
           this.lifes2.removeLife()
-
+          console.log(this.lifes2);
         }
         // Elimina el enemigo del DOM
         enemy.element.remove();
@@ -107,7 +108,7 @@ class Game {
     this.player.bullets.find((bullet) => {
       // Iteramos a través de las balas del jugador.
       console.log(bullet);
-      return this.enemies.find((enemy) => {
+      this.enemies.find((enemy) => {
         // Para cada bala, comprobamos si colisiona con algún enemigo.
         console.log(enemy);
         if (bullet.didCollide(enemy)) {
@@ -129,23 +130,27 @@ class Game {
           this.player.bullets = this.player.bullets.filter((bul) => {
             return bul !== bullet;
           });
-         
+
         }
       });
+
+      if (this.lifes.score === 1) {
+        this.youWin();
+      }
+
     });
+
 
     if (this.player2) {
       this.player2.bullets.find((bullet) => {
         // Iteramos a través de las balas del jugador.
         console.log(bullet);
-        return this.enemies.find((enemy) => {
+        this.enemies.find((enemy) => {
           // Para cada bala, comprobamos si colisiona con algún enemigo.
           console.log(enemy);
           if (bullet.didCollide(enemy)) {
             this.lifes2.addScore();
-            if (this.score = 10) {
-              this.youWin();
-            }
+
             // Si hay una colisión entre el enemigo y la bala:
 
             // Eliminamos el elemento del enemigo del DOM.
@@ -165,7 +170,11 @@ class Game {
             });
           }
         });
+        if (this.lifes2.score === 1) {
+          this.youWin();
+        }
       });
+
     }
 
   }
@@ -180,44 +189,79 @@ class Game {
       elem.classList.add("hidden-div");
     }
   }
+
   youWin() {
+    this.removeListener('keyup');
+    this.removeListener('keydown');
     document.getElementById("background").classList.add("hidden-div");
+    this.isMultiPlayer && document.getElementById("second-player").classList.add("hidden-div");
+    document.getElementById("first-player").classList.add("hidden-div");
     document.getElementById("win-game").classList.remove("hidden-div");
     document.getElementById("playing-sound").pause();
     document.getElementById("end-sounds").play();
     document.getElementById("points").classList.add("hidden-div");
-    //document.getElementById("enemy").classList.add("hidden-div");
-    //this.enemies.remove();
+
     if (this.player2) {
       document.getElementById("points2").classList.add("hidden-div");
     }
 
+    this.enemies.forEach(enemy1 => enemy1.element.remove());
+    this.enemies = []
+
+    this.player.bullets.forEach(bullet => bullet.element.remove());
+    this.player.bullets = [];
+    this.player.element.remove();
+    this.player2 && this.player2.element.remove();
+
+
 
     clearInterval(this.intervalId);
 
-    document.getElementById("game-score1").innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
+    document.getElementById("win-game-score1").innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
     if (this.player2) {
-      document.getElementById("game-score2").innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS `;
+      document.getElementById("win-game-score2").innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS`;
     }
   }
+
+  removeListener(type) {
+    window.addEventListener(type, function (event) {
+      event.stopImmediatePropagation();
+    }, true);
+  }
+
+
   endGame() {
+    this.removeListener('keyup');
+    this.removeListener('keydown');
     document.getElementById("background").classList.add("hidden-div");
     document.getElementById("end-game").classList.remove("hidden-div");
     document.getElementById("playing-sound").pause();
     document.getElementById("end-sounds").play();
     document.getElementById("points").classList.add("hidden-div");
-    //document.getElementById("enemy").classList.add("hidden-div");
-    //this.enemies.remove();
+
     if (this.player2) {
       document.getElementById("points2").classList.add("hidden-div");
     }
 
+    this.enemies.forEach(enemy => enemy.element.remove());
+    this.enemies = []
+
+    this.player.bullets.forEach(bullet => bullet.element.remove());
+    this.player.bullets = []
+
+
 
     clearInterval(this.intervalId);
 
-    document.getElementById("game-score1").innerText = `YOU HAVE ${this.lifes.score} POINTS`;
+    document.getElementById("end-game-score1").innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
     if (this.player2) {
-      document.getElementById("game-score2").innerText = `SCORE PLAYER 2: YOU HAVE ${this.lifes2.score} POINTS `;
+      document.getElementById("end-game-score2").innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS`;
     }
+  }
+
+  removeListener(type) {
+    window.addEventListener(type, function (event) {
+      event.stopImmediatePropagation();
+    }, true);
   }
 }

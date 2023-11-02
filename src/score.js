@@ -56,6 +56,7 @@ class Score {
     const hearts = this.heartsContainer.children
     hearts[hearts.length - 1].remove();
     document.getElementById("hurt-sound").play();
+    
   }
 
   addScore() {

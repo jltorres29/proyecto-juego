@@ -11,7 +11,7 @@
 <body>
     <div id="game-board">
         <audio id="playing-sound" volume="2000" loop>
-            <source src="./sounds/playingSound.mp3" type="audio/mp3">
+            <source src="./sounds/ringtones-tema-zelda.mp3" type="audio/mp3">
         </audio>
         <audio id="shoot-sound">
             <source src="./sounds/shoot.mp3" type="audio/mp3">
@@ -29,7 +29,9 @@
 
         <div id="intro-game">
             <button id="intro-game-btn">START</button>
+
         </div>
+
 
         <div id="game-board-player" class="hidden-div">
             <div id="select-player">
@@ -61,35 +63,36 @@
             </div>
         </div>
 
-        <div id="end-game" class="hidden">
-            <audio id="end-sounds" volume="5000">
+        <div id="end-game" class="hidden-div">
+            <audio id="end-sounds">
                 <source src="./sounds/endSoundGameOver.mp3" type="audio/mp3">
             </audio>
             <div id="end-game-score1">
-                <h2>SCORE PLAYER 1:</h2>
+
+            </div>
+            <div>
+                <button class='restart-btn'>
+                    RESTART
+                </button>
             </div>
             <div id="end-game-score2">
             </div>
-            <div>
-                <button id='restart-btn'>
-                    RESTART
-                </button>
-            </div>
+
         </div>
-        <div id="win-game" class="hidden">
-            <audio id="end-sounds" volume="5000">
-                <source src="./sounds/endSoundGameOver.mp3" type="audio/mp3">
+        <div id="win-game" class="hidden-div">
+            <audio id="win-sounds">
+                <source src="./sounds/item-zelda-ringtones.mp3" type="audio/mp3">
             </audio>
-            <div id="game-score1">
-                <h2>SCORE PLAYER 1:</h2>
-            </div>
-            <div id="game-score2">
+            <div id="win-game-score1">
             </div>
             <div>
-                <button id='restart-btn'>
+                <button class='restart-btn'>
                     RESTART
                 </button>
             </div>
+            <div id="win-game-score2">
+            </div>
+
         </div>
     </div>
 

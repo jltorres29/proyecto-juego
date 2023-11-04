@@ -61,7 +61,7 @@ h4 {
 #intro-game {
   width: 800px;
   height: 500px;
-  background-image: url("./../assets/imagen-inicio1.jpeg");
+  background-image: url("./../assets/imagen-inicio1-logo.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -224,20 +224,27 @@ h4 {
 }
 
 #end-game-score2,
-#win-game-score2 {
+#win-game-score2,
+#end-game-score1,
+#win-game-score1  {
+  background-image: url(./../assets/camuflaje.webp);
   display: flex;
-  justify-content: right;
-
-  font-size: 30px;
+  justify-content: center;
+  font-size: 23px;
   color: white;
+  margin-top: 300px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-#end-game-score1,
-#win-game-score1 {
-  display: flex;
-  justify-content: left;
-  align-items: end;
-  font-size: 30px;
+#difficulty {
   color: white;
-  /*margin-left: 20px;*/
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+.difficulty-button {
+  background-color: aqua;
 }

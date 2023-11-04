@@ -1,15 +1,21 @@
+const speeds = {
+  EASY: { vx: 2, vy: 10 },
+  MEDIUM: { vx: 4, vy: 12 },
+  HEAVY: { vx: 6, vy: 14 },
+}
+
 class Enemy {
-  constructor(container, x, y) {
+  constructor(container, difficulty, x, y) {
     this.container = container; // El contenedor en el que se crea el enemigo.
     this.x = x; // Posición inicial en el eje X.
     this.y = y; // Posición inicial en el eje Y.
     this.width = 100; // Ancho del enemigo.
     this.height = 100; // Alto del enemigo.
-    this.vy = 10; // Velocidad vertical del enemigo.
-    this.vx = 2; // Velocidad horizontal del enemigo.
+    this.vy = speeds[difficulty].vy; // Velocidad vertical del enemigo.
+    this.vx = speeds[difficulty].vx; // Velocidad horizontal del enemigo.
     this.ydirection = 1;
     this.xdirection = 1;
-    
+
     this.element = document.createElement("div"); // Crea un nuevo elemento div para representar al enemigo.
     this.element.style.position = "absolute"; // Establece la posición del elemento como relativa.
     this.element.id = "enemy";

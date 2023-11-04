@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="./styles/style.css" rel="stylesheet">
+    <style>
+        .blink {
+            animation: blinker 2s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -28,7 +39,7 @@
         <div id="enemy-div"></div>
 
         <div id="intro-game">
-            <button id="intro-game-btn">START</button>
+            <button class="blink" id="intro-game-btn">START</button>
 
         </div>
 
@@ -60,6 +71,14 @@
                         <li>SHOOT => LETTER W</li>
                     </ul>
                 </div>
+            </div>
+
+            <div id="difficulty">
+                <button class="difficulty-button" id="difficulty-less-button">-</button>
+                <button class="difficulty-button" id="return-easy-button">
+                    <spanid id="difficulty-text">EASY</span>
+                </button>
+                <button class="difficulty-button" id="difficulty-more-button">+</button>
             </div>
         </div>
 

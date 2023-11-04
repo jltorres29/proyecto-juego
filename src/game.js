@@ -1,10 +1,20 @@
+const options = {
+  EASY: { difficulty: 5, difficultScore: 25 },
+  MEDIUM: { difficulty: 15, difficultScore: 35 },
+  HEAVY: { difficulty: 30, difficultScore: 50 },
+}
+
 class Game {
-  constructor(container, isMultiPlayer = false) {
+
+  constructor(container, isMultiPlayer = false, difficultyName) {
     this.container = container;
     this.isMultiPlayer = isMultiPlayer;
 
+    this.numEnemy = options[difficultyName].difficulty;
+
+    this.difficultScore = options[difficultyName].difficultScore;
+    this.difficultyName = difficultyName;
     this.background = new Background(this.container); // Crea un fondo en el contenedor del juego.
-    //this.element.id = "allgame";
     this.player = new Player(this.container); // Crea un jugador en el contenedor del juego.
     this.lifes = new Score(this.container, true);
 
@@ -13,13 +23,11 @@ class Game {
       this.lifes2 = new Score2(this.container);
     }
 
-    // this.enemy = new Enemy(this.container); // Inicializa un arreglo para enemigos.
-    //this.imgjose = new Score(this.container)
-    // this.score = new Score(this.container, this.score, this.player.hits);
     this.enemies = [];
     this.gameIsOver = false;
 
     this.intervalId = null;
+
   }
 
   // Método para iniciar el juego.
@@ -30,15 +38,6 @@ class Game {
     }, 1000 / 24); // Actualiza el juego aproximadamente 24 veces por segundo.
   }
 
-  // nuevo metodo gameLoop
-  /*gameLoop() {
-    if (this.gameIsOver) {
-      return;
-    }
-    this.update();
-
-    window.requestAnimationFrame(() => this.gameLoop());
-  }*/
 
   // Método para actualizar el estado del juego.
   update() {
@@ -98,9 +97,9 @@ class Game {
 
     // Crea un nuevo enemigo basado en una probabilidad aleatoria
     // cuando no hay otros objetos en la pantalla
-    let numenemy = 5 //SI SE PUEDE, AÑADIR DIFICULTAD MODIFICANDO NUMERO ENEMI
-    if (Math.random() > 0.98 && this.enemies.length < numenemy) {
-      this.enemies.push(new Enemy(this.container));
+
+    if (Math.random() > 0.98 && this.enemies.length < this.numEnemy) {
+      this.enemies.push(new Enemy(this.container, this.difficultyName));
     }
     // Este código parece ser parte de una iteración a través de las balas del jugador
     // para detectar colisiones con enemigos.
@@ -112,11 +111,16 @@ class Game {
         // Para cada bala, comprobamos si colisiona con algún enemigo.
         console.log(enemy);
         if (bullet.didCollide(enemy)) {
+
+          enemy.element.style.backgroundImage = `url(./assets/explosion.gif)`;
+          console.log('boom')
+          setInterval(() => {
+            enemy.element.remove(); // Actualiza el estado del juego en cada intervalo.
+          }, 1000 / 5);
           this.lifes.addScore();
           // Si hay una colisión entre el enemigo y la bala:
 
           // Eliminamos el elemento del enemigo del DOM.
-          enemy.element.remove();
 
           // Actualizamos la lista de enemigos eliminando el enemigo actual.
           this.enemies = this.enemies.filter((en) => {
@@ -134,7 +138,7 @@ class Game {
         }
       });
 
-      if (this.lifes.score === 1) {
+      if (this.lifes.score === this.difficultScore) {
         this.youWin();
       }
 
@@ -170,7 +174,7 @@ class Game {
             });
           }
         });
-        if (this.lifes2.score === 1) {
+        if (this.lifes2.score === this.difficultScore) {
           this.youWin();
         }
       });
@@ -253,9 +257,9 @@ class Game {
 
     clearInterval(this.intervalId);
 
-    document.getElementById("end-game-score1").innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
+    document.getElementById("end-game-score1").innerText = `PLAYER 1: ${this.lifes.score} POINTS`;
     if (this.player2) {
-      document.getElementById("end-game-score2").innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS`;
+      document.getElementById("end-game-score2").innerText = `PLAYER 2: ${this.lifes2.score} POINTS`;
     }
   }
 

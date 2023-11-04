@@ -2,10 +2,9 @@ const options = {
   EASY: { difficulty: 5, difficultScore: 25 },
   MEDIUM: { difficulty: 15, difficultScore: 35 },
   HEAVY: { difficulty: 30, difficultScore: 50 },
-}
+};
 
 class Game {
-
   constructor(container, isMultiPlayer = false, difficultyName) {
     this.container = container;
     this.isMultiPlayer = isMultiPlayer;
@@ -27,7 +26,6 @@ class Game {
     this.gameIsOver = false;
 
     this.intervalId = null;
-
   }
 
   // Método para iniciar el juego.
@@ -38,11 +36,12 @@ class Game {
     }, 1000 / 24); // Actualiza el juego aproximadamente 24 veces por segundo.
   }
 
-
   // Método para actualizar el estado del juego.
   update() {
     this.player.move(); // Mueve al jugador.
-    if (this.isMultiPlayer === true) { this.player2.move(); }
+    if (this.isMultiPlayer === true) {
+      this.player2.move();
+    }
 
     // Verifica si hay colisión y si todavía hay un enemigo en la pantalla
 
@@ -50,14 +49,16 @@ class Game {
       const enemy = this.enemies[i];
       enemy.move();
       // si el jugador choca con un enemigo
-      if (this.player.didCollide(enemy) || (this.player2 && this.player2.didCollide(enemy))) {
+      if (
+        this.player.didCollide(enemy) ||
+        (this.player2 && this.player2.didCollide(enemy))
+      ) {
         if (this.player.didCollide(enemy) && this.lifes.lifes > 0) {
-          console.log('player1');
-          this.lifes.removeLife()
+          console.log("player1");
+          this.lifes.removeLife();
           console.log(this.lifes);
-
         } else if (this.player2.didCollide(enemy) && this.lifes2.lifes > 0) {
-          this.lifes2.removeLife()
+          this.lifes2.removeLife();
           console.log(this.lifes2);
         }
         // Elimina el enemigo del DOM
@@ -81,7 +82,6 @@ class Game {
         this.enemies.splice(i, 1);
         // Actualiza la variable del contador para tener en cuenta el enemigo eliminado
         i--;
-
       }
     }
 
@@ -90,15 +90,14 @@ class Game {
       if (this.lifes.lifes <= 0) {
         this.endGame();
       }
-    }
-    else if (this.lifes.lifes <= 0 && this.lifes2.lifes <= 0) {
+    } else if (this.lifes.lifes <= 0 && this.lifes2.lifes <= 0) {
       this.endGame();
     }
 
     // Crea un nuevo enemigo basado en una probabilidad aleatoria
     // cuando no hay otros objetos en la pantalla
 
-    if (Math.random() > 0.98 && this.enemies.length < this.numEnemy) {
+    if (Math.random() > 0.95 && this.enemies.length < this.numEnemy) {
       this.enemies.push(new Enemy(this.container, this.difficultyName));
     }
     // Este código parece ser parte de una iteración a través de las balas del jugador
@@ -111,9 +110,8 @@ class Game {
         // Para cada bala, comprobamos si colisiona con algún enemigo.
         console.log(enemy);
         if (bullet.didCollide(enemy)) {
-
           enemy.element.style.backgroundImage = `url(./assets/explosion.gif)`;
-          console.log('boom')
+          console.log("boom");
           setInterval(() => {
             enemy.element.remove(); // Actualiza el estado del juego en cada intervalo.
           }, 1000 / 5);
@@ -134,16 +132,13 @@ class Game {
           this.player.bullets = this.player.bullets.filter((bul) => {
             return bul !== bullet;
           });
-
         }
       });
 
       if (this.lifes.score === this.difficultScore) {
         this.youWin();
       }
-
     });
-
 
     if (this.player2) {
       this.player2.bullets.find((bullet) => {
@@ -153,12 +148,12 @@ class Game {
           // Para cada bala, comprobamos si colisiona con algún enemigo.
           console.log(enemy);
           if (bullet.didCollide(enemy)) {
+            enemy.element.style.backgroundImage = `url(./assets/explosion.gif)`;
+            console.log("boom");
+            setInterval(() => {
+              enemy.element.remove(); // Actualiza el estado del juego en cada intervalo.
+            }, 1000 / 5);
             this.lifes2.addScore();
-
-            // Si hay una colisión entre el enemigo y la bala:
-
-            // Eliminamos el elemento del enemigo del DOM.
-            enemy.element.remove();
 
             // Actualizamos la lista de enemigos eliminando el enemigo actual.
             this.enemies = this.enemies.filter((en) => {
@@ -178,9 +173,7 @@ class Game {
           this.youWin();
         }
       });
-
     }
-
   }
 
   checkPlayers() {
@@ -195,10 +188,11 @@ class Game {
   }
 
   youWin() {
-    this.removeListener('keyup');
-    this.removeListener('keydown');
+    this.removeListener("keyup");
+    this.removeListener("keydown");
     document.getElementById("background").classList.add("hidden-div");
-    this.isMultiPlayer && document.getElementById("second-player").classList.add("hidden-div");
+    this.isMultiPlayer &&
+      document.getElementById("second-player").classList.add("hidden-div");
     document.getElementById("first-player").classList.add("hidden-div");
     document.getElementById("win-game").classList.remove("hidden-div");
     document.getElementById("playing-sound").pause();
@@ -209,34 +203,39 @@ class Game {
       document.getElementById("points2").classList.add("hidden-div");
     }
 
-    this.enemies.forEach(enemy1 => enemy1.element.remove());
-    this.enemies = []
+    this.enemies.forEach((enemy1) => enemy1.element.remove());
+    this.enemies = [];
 
-    this.player.bullets.forEach(bullet => bullet.element.remove());
+    this.player.bullets.forEach((bullet) => bullet.element.remove());
     this.player.bullets = [];
     this.player.element.remove();
     this.player2 && this.player2.element.remove();
 
-
-
     clearInterval(this.intervalId);
 
-    document.getElementById("win-game-score1").innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
+    document.getElementById(
+      "win-game-score1"
+    ).innerText = `PLAYER 1 HAVE ${this.lifes.score} POINTS`;
     if (this.player2) {
-      document.getElementById("win-game-score2").innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS`;
+      document.getElementById(
+        "win-game-score2"
+      ).innerText = `PLAYER 2 HAVE ${this.lifes2.score} POINTS`;
     }
   }
 
   removeListener(type) {
-    window.addEventListener(type, function (event) {
-      event.stopImmediatePropagation();
-    }, true);
+    window.addEventListener(
+      type,
+      function (event) {
+        event.stopImmediatePropagation();
+      },
+      true
+    );
   }
 
-
   endGame() {
-    this.removeListener('keyup');
-    this.removeListener('keydown');
+    this.removeListener("keyup");
+    this.removeListener("keydown");
     document.getElementById("background").classList.add("hidden-div");
     document.getElementById("end-game").classList.remove("hidden-div");
     document.getElementById("playing-sound").pause();
@@ -247,25 +246,31 @@ class Game {
       document.getElementById("points2").classList.add("hidden-div");
     }
 
-    this.enemies.forEach(enemy => enemy.element.remove());
-    this.enemies = []
+    this.enemies.forEach((enemy) => enemy.element.remove());
+    this.enemies = [];
 
-    this.player.bullets.forEach(bullet => bullet.element.remove());
-    this.player.bullets = []
-
-
+    this.player.bullets.forEach((bullet) => bullet.element.remove());
+    this.player.bullets = [];
 
     clearInterval(this.intervalId);
 
-    document.getElementById("end-game-score1").innerText = `PLAYER 1: ${this.lifes.score} POINTS`;
+    document.getElementById(
+      "end-game-score1"
+    ).innerText = `PLAYER 1: ${this.lifes.score} POINTS`;
     if (this.player2) {
-      document.getElementById("end-game-score2").innerText = `PLAYER 2: ${this.lifes2.score} POINTS`;
+      document.getElementById(
+        "end-game-score2"
+      ).innerText = `PLAYER 2: ${this.lifes2.score} POINTS`;
     }
   }
 
   removeListener(type) {
-    window.addEventListener(type, function (event) {
-      event.stopImmediatePropagation();
-    }, true);
+    window.addEventListener(
+      type,
+      function (event) {
+        event.stopImmediatePropagation();
+      },
+      true
+    );
   }
 }

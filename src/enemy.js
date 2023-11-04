@@ -1,8 +1,8 @@
 const speeds = {
-  EASY: { vx: 2, vy: 10 },
-  MEDIUM: { vx: 4, vy: 12 },
-  HEAVY: { vx: 6, vy: 14 },
-}
+  EASY: { vx: 3, vy: 12 },
+  MEDIUM: { vx: 6, vy: 14 },
+  HEAVY: { vx: 8, vy: 16 },
+};
 
 class Enemy {
   constructor(container, difficulty, x, y) {
@@ -21,7 +21,7 @@ class Enemy {
     this.element.id = "enemy";
     this.element.style.width = `${this.width}px`; // Establece el ancho del elemento.
     this.element.style.height = `${this.height}px`; // Establece el alto del elemento.
-    const ramdomx = Math.floor(Math.random() * 720);//Establece un valor ramdom para el valor de la x entre 0 y 800
+    const ramdomx = Math.floor(Math.random() * 720); //Establece un valor ramdom para el valor de la x entre 0 y 800
     this.element.style.left = `${(this.x = ramdomx)}px`; // Establece la posición izquierda inicial.
     this.element.style.top = `${(this.y = 20)}px`; // Establece la posición superior inicial.
     this.element.style.backgroundImage = `url(./assets/bomba2-recortada.png)`;

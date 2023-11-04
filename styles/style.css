@@ -12,8 +12,6 @@ body {
   ;
 }
 
-
-
 h2 {
   font-size: 20px;
   color: white;
@@ -30,7 +28,6 @@ h4 {
   justify-content: unset;
 }
 
-/* Estilo del contenedor principal del juego */
 #game-board {
   overflow: hidden;
   width: 800px;
@@ -47,7 +44,6 @@ h4 {
   margin: 15px;
 }
 
-/*FONDO PANTALLA PARA SELECCIONAR JUGADOR*/
 #game-board-player {
   width: 800px;
   height: 500px;
@@ -56,7 +52,6 @@ h4 {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 
 #intro-game {
   width: 800px;
@@ -130,7 +125,6 @@ h4 {
 }
 
 #select-player {
-
   display: flex;
   justify-content: space-between;
 }
@@ -150,12 +144,10 @@ h4 {
 
 #player1 {
   margin-left: 20px;
-
 }
 
 #player2 {
   margin-right: 20px;
-
 }
 
 #img-jose {
@@ -188,8 +180,6 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-
-
 }
 
 #win-game {
@@ -235,6 +225,7 @@ h4 {
   margin-top: 300px;
   margin-left: 5px;
   margin-right: 5px;
+  border-radius: 5px;
 }
 
 #difficulty {
@@ -243,7 +234,6 @@ h4 {
   display: flex;
   justify-content: center;
 }
-
 
 .difficulty-button {
   background-color: aqua;

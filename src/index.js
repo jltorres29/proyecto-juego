@@ -1,6 +1,6 @@
 let difficulty = 5;
 let difficultScore = 25;
-let difficultyName = 'EASY'
+let difficultyName = "EASY";
 
 window.addEventListener("load", () => {
   const container = document.getElementById("game-board");
@@ -28,8 +28,6 @@ window.addEventListener("load", () => {
 
   const easyDifficulty = document.getElementById("return-easy-button");
 
-
-
   //AQUI SE AÑADE DESDE LA PANTALLA INICIO BOTON STAR A SELECCIONAR JUGADORES
   btnStart.addEventListener("click", () => {
     introGame.classList.add("hidden-div");
@@ -41,27 +39,27 @@ window.addEventListener("load", () => {
 
   //AQUI DESDE LA PANTALLA DE SELECCIONAR JUGADORES SE REDIRIGE A LA PANTALLA DEL JUEGO
   easyDifficulty.addEventListener("click", () => {
-    console.log('less')
-    difficultyText.innerText = 'EASY';
+    console.log("less");
+    difficultyText.innerText = "EASY: 25 POINTS TO WIN";
     difficulty = 5;
     difficultScore = 1;
-    difficultyName = 'EASY'
+    difficultyName = "EASY";
   });
 
   mediumDifficulty.addEventListener("click", () => {
-    console.log('less')
-    difficultyText.innerText = 'MEDIUM'
-    difficulty = 15
-    difficultScore = 2
-    difficultyName = 'MEDIUM'
+    console.log("less");
+    difficultyText.innerText = "MEDIUM: 35 POINTS TO WIN";
+    difficulty = 15;
+    difficultScore = 2;
+    difficultyName = "MEDIUM";
   });
 
   moreDifficulty.addEventListener("click", () => {
-    console.log('more')
-    difficultyText.innerText = 'HEAVY'
-    difficulty = 30
-    difficultScore = 3
-    difficultyName = 'HEAVY'
+    console.log("more");
+    difficultyText.innerText = "HEAVY: 50 POINTS TO WIN";
+    difficulty = 30;
+    difficultScore = 3;
+    difficultyName = "HEAVY";
   });
 
   selectPlayer1.addEventListener("click", () => {
@@ -80,7 +78,7 @@ window.addEventListener("load", () => {
 
   Array.from(btnsRestart).forEach((btnRestart) => {
     btnRestart.addEventListener("click", () => {
-      window.location.reload()
+      window.location.reload();
       /*endGame.classList.add("hidden-div");
       // Crea una nueva instancia del juego y lo inicia en el contenedor especificado
       gameBoardPlayer.classList.remove("hidden-div");
@@ -89,5 +87,5 @@ window.addEventListener("load", () => {
       document.getElementById("end-game-score1").innerText = "";
       document.getElementById("end-game-score2").innerText = "";*/
     });
-  })
+  });
 });

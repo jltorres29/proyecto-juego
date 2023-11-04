@@ -196,7 +196,7 @@ class Game {
     document.getElementById("first-player").classList.add("hidden-div");
     document.getElementById("win-game").classList.remove("hidden-div");
     document.getElementById("playing-sound").pause();
-    document.getElementById("end-sounds").play();
+    document.getElementById("win-sounds").play();
     document.getElementById("points").classList.add("hidden-div");
 
     if (this.player2) {
